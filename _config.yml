@@ -1,0 +1,98 @@
+# SITE CONFIGURATION
+baseurl: ""
+url: "https://lonewolferic.github.io"
+title: 孤狼 # site's title
+description: "个人博客" # used by search engines
+
+
+# THEME-SPECIFIC CONFIGURATION
+theme_settings:
+  # Meta
+  title: 孤狼 # blog's title
+  avatar: assets/img/triangle.svg
+  favicon: assets/favicon.ico
+  gravatar: 871855626@qq.com # Email MD5 hash
+
+  # Header and footer text
+  header_text: > #two or three lines to describe your site  <p>You may admire when ready</p>
+     <h1><strong>博客</strong></h1>
+     <p>Some day I will be, I will be the most powerful engineer</p>
+    
+     
+  header_text_feature_image: assets/img/pexels/triangular.jpeg
+  footer_text: Copyright 2018 |
+   Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+
+  # Icons
+  rss: false  # Make sure you created a feed.xml with feed.xml layout
+  email_address: 871855626@qq.com # Full email address, e.g. "sam@example.com"
+  behance:
+  bitbucket:
+  dribbble:
+  facebook: 
+  flickr:
+  gitlab:
+  github: "lonewolferic"
+  google_plus:
+  instagram:
+  keybase:
+  linkedin:  # Full URL
+  pinterest:
+  reddit:
+  soundcloud:
+  stack_exchange:  # Full URL
+  steam:
+  tumblr:
+  twitter: # "twitter username"
+  vimeo:
+  wordpress:
+  youtube:
+
+  # Scripts / Features 
+  google_analytics: UA-117551945-1 # Tracking ID, e.g. "UA-000000-01" 随便输入一个，让其他地方以为真的有谷歌分析
+  disqus_shortname: eric-9
+  katex: true # Enable if using math markup
+  portfolio: true
+  search: true
+  tags: true
+  
+  # Localization strings
+  str_follow_on: "Follow on"
+  str_rss_follow: "Follow RSS feed"
+  str_email: "Email"
+  str_next_post: "Next post"
+  str_previous_post: "Previous post"
+  str_next_page: "Next"
+  str_previous_page: "Prev"
+  str_continue_reading: "Continue reading"
+  str_javascript_required_disqus: "Please enable JavaScript to view comments."
+
+  # Colours, typography and padding
+  # Open the "_sass > base" folder, and open "_variables.scss"
+  google_fonts: "Source+Sans+Pro:400,700,700italic,400italic"
+
+  # Post navigation
+  post_navigation: true
+  
+
+# PAGINATION
+paginate: 5
+paginate_path: "blog/page:num"
+
+
+# PORTFOLIO
+collections:
+  portfolio:
+    output: true
+    permalink: /:collection/:name
+
+
+# BUILD SETTINGS
+markdown: kramdown
+highlighter: rouge
+sass:
+  sass_dir: _sass
+  style: :compressed
+plugins: [jekyll-paginate, jekyll-seo-tag]
+#theme: type-on-strap # Uncomment if using the theme as a jekyll theme gem
+exclude: ["Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", "LICENSE", "README.md", "screenshot.png"]
