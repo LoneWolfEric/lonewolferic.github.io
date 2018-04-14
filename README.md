@@ -1,4 +1,16 @@
-# Type on Strap 
+# 孤狼博客
+
+大家好，我是孤狼，这里是我的个人博客网站，偶尔写点文章。
+
+经历了两天的模改，网站终于上线了，第一次做网站，有很多不足的地方请大家见谅！有错误的地方也请大家指出，谢谢！
+
+联系方式：871855626@qq.com
+
+以下内容为该网站模板的原作者信息及版权声明
+
+---
+
+## Type on Strap
 
 [![Build Status](https://travis-ci.org/Sylhare/Type-on-Strap.svg?branch=master)](https://travis-ci.org/Sylhare/Type-on-Strap) 
 [![Gem Version](https://badge.fury.io/rb/type-on-strap.svg)](https://badge.fury.io/rb/type-on-strap)
@@ -17,10 +29,6 @@ A free and open-source [Jekyll](https://jekyllrb.com) theme. Based on Rohan Chan
 
 > [Demo](https://sylhare.github.io/Type-on-Strap/)
 
-[![Default Type on Strap blog](https://github.com/Sylhare/Type-on-Strap/blob/master/screenshot.png?raw=true)](https://sylhare.github.io/Type-on-Strap/)
-
-
-
-## License
+### License
 
 [The MIT License (MIT)](https://raw.githubusercontent.com/Sylhare/Type-on-Strap/master/LICENSE)
