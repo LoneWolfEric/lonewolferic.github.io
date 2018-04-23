@@ -3,7 +3,7 @@ baseurl: ""
 url: "https://lonewolferic.github.io"
 name: 孤狼
 title: 孤狼 # site's title
-description: "个人博客" # used by search engines
+description: "生命不息，折腾不止" # used by search engines
 
 
 # THEME-SPECIFIC CONFIGURATION
@@ -15,13 +15,13 @@ theme_settings:
   gravatar: 871855626@qq.com # Email MD5 hash
 
   # Header and footer text
-  header_text: > #two or three lines to describe your site  <p>You may admire when ready</p>
+  header_text: > #two or three lines to describe your site
      <h1><strong>博客</strong></h1>
-     <p>Some day I will be, I will be the most powerful engineer</p>
+     <p>纸上得来终觉浅 绝知此事要躬行</p>
     
      
   header_text_feature_image: assets/img/pexels/triangular.jpeg
-  footer_text: Copyright 2018 |
+  footer_text: Copyright © 2018 LoneWolf |
    Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
 
   # Icons
