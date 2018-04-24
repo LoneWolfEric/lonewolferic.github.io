@@ -10,7 +10,7 @@ feature-img: "assets/img/pexels/circuit.jpeg"
 
 会一点点嵌入式，会一点点电路，会一点点python，会一点点linux
 
-写不出代码，de不出bug，转不了电机
+写不出代码，de不出bug，转不动电机
 
 喜欢搞机，喜欢造人工智障
 
