@@ -9,6 +9,15 @@
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>Hello World</title>
+                <description>&lt;p&gt;hello world&lt;/p&gt;
+</description>
+                <pubDate>Wed, 25 Apr 2018 00:00:00 +0800</pubDate>
+                <link>http://localhost:4000/2018/04/25/hello-world.html</link>
+                <guid isPermaLink="true">http://localhost:4000/2018/04/25/hello-world.html</guid>
+            </item>
+        
+            <item>
                 <title>Blogging with titlee</title>
                 <description>&lt;h1 id=&quot;i-am-a-samll-title&quot;&gt;I am a Samll title&lt;/h1&gt;
 
