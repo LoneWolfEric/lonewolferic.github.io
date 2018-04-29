@@ -12,11 +12,11 @@
                 <title>Hello World</title>
                 <description>&lt;p&gt;个人博客上线啦！&lt;/p&gt;
 
-&lt;h4 id=&quot;我是谁&quot;&gt;我是谁?&lt;/h4&gt;
+&lt;h3 id=&quot;我是谁&quot;&gt;&lt;strong&gt;我是谁?&lt;/strong&gt;&lt;/h3&gt;
 
 &lt;p&gt;  四川大学电气信息学院的大二本科生，自我介绍什么的，About里面都有&lt;/p&gt;
 
-&lt;h4 id=&quot;为什么开始写博客&quot;&gt;为什么开始写博客?&lt;/h4&gt;
+&lt;h3 id=&quot;为什么开始写博客&quot;&gt;&lt;strong&gt;为什么开始写博客?&lt;/strong&gt;&lt;/h3&gt;
 
 &lt;p&gt;  主要是为了不让自己太颓啦，最近实在是太咸鱼了。开个博客，给自己点动力和压力，摆脱咸鱼的处境&lt;/p&gt;
 
@@ -24,7 +24,7 @@
 
 &lt;p&gt;  还有就是羡慕各位大佬都有自己的网站，羡慕嫉妒恨，所以我也搞一个，哼～&lt;/p&gt;
 
-&lt;h4 id=&quot;为什么要叫孤狼&quot;&gt;为什么要叫孤狼?&lt;/h4&gt;
+&lt;h3 id=&quot;为什么要叫孤狼&quot;&gt;&lt;strong&gt;为什么要叫孤狼?&lt;/strong&gt;&lt;/h3&gt;
 
 &lt;p&gt;  孤狼，意为桀骜不训，永不低头。向往着真理与正义，却又承受着自我求索的孤寂。独行，却不孤寂；狂野，却又不无情。&lt;/p&gt;
 
@@ -32,13 +32,13 @@
 
 &lt;p&gt;  觉得叫“孤狼”不顺口叫“表表”也行&lt;/p&gt;
 
-&lt;h4 id=&quot;为什么不去开公众号&quot;&gt;为什么不去开公众号?&lt;/h4&gt;
+&lt;h3 id=&quot;为什么不去开公众号&quot;&gt;&lt;strong&gt;为什么不去开公众号?&lt;/strong&gt;&lt;/h3&gt;
 
 &lt;p&gt;  如果开了微信公众号，由于爸妈用的都是微信，so～想像一个场景：我爸打开微信，看到自己儿子的公众号又出了一篇新文章，他打开一看，儿子又烧了一块板子，嗯～这次经验总结的很好。然后就转发到自己的朋友圈（日常秀娃）下面的评论区就会出现各种emmmm……你们懂的。尴尬癌都要犯了…….&lt;/p&gt;
 
 &lt;p&gt;  其实也还有其他原因，&lt;a href=&quot;https://zhuanlan.zhihu.com/p/22266788&quot;&gt;YY硕的文章&lt;/a&gt;里告诉我们可以去学点html，css，javascript，最好的练习方式就是去帮别人写网站，但……没人要我帮忙写！？那就给自己写过个呗。顺便练练web编程（其实使用jekyll框架 + 模板也没练多少编程，但是！有个个人网站感觉很geek啊！）&lt;/p&gt;
 
-&lt;h4 id=&quot;其他&quot;&gt;其他&lt;/h4&gt;
+&lt;h3 id=&quot;其他&quot;&gt;&lt;strong&gt;其他&lt;/strong&gt;&lt;/h3&gt;
 
 &lt;p&gt;  更新频率？布吉岛，看心情更新，努力做到一月一更吧&lt;/p&gt;
 
