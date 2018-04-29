@@ -17,7 +17,7 @@ theme_settings:
   # Header and footer text
   header_text: > #two or three lines to describe your site
      <h1><strong>博客</strong></h1>
-     <p>纸上得来终觉浅 绝知此事要躬行</p>
+     <p>纸上得来终觉浅&emsp;绝知此事要躬行</p>
     
      
   header_text_feature_image: assets/img/pexels/triangular.jpeg
