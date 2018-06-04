@@ -5,7 +5,7 @@
         <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
         <link>http://localhost:4000/</link>
         <description></description>
-        <pubDate>Tue, 05 Jun 2018 01:47:35 +0800</pubDate>
+        <pubDate>Tue, 05 Jun 2018 01:55:40 +0800</pubDate>
         
         <item>
             <title>纪念第一次参加技术类比赛：船模大赛</title>
@@ -44,7 +44,7 @@
 
 &lt;p&gt;&lt;img src=&quot;boat_img/1410803219.jpeg&quot; alt=&quot;1410803219&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;##　下水&lt;/p&gt;
+&lt;h2 id=&quot;下水&quot;&gt;下水&lt;/h2&gt;
 
 &lt;p&gt;比赛当天才是第一次下水，上午评完外观分（我们的船叫Aurora，嘻嘻），下午我们自己试船（离比赛开始只有4h）。&lt;/p&gt;
 
