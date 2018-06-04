@@ -1,16 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" title="XSL Formatting" href="/rss.xsl" media="all" ?>
-
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>孤狼</title>
-        <description>生命不息，折腾不止</description>
-        <link>http://localhost:4000</link>
-        <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+        <link>http://localhost:4000/</link>
+        <description></description>
+        <pubDate>Tue, 05 Jun 2018 01:47:35 +0800</pubDate>
         
-            <item>
-                <title>Hello World</title>
-                <description>&lt;p&gt;个人博客上线啦！&lt;/p&gt;
+        <item>
+            <title>纪念第一次参加技术类比赛：船模大赛</title>
+            <link>/2018/05/16/my-first-model-boat-race.html</link>
+            <guid isPermaLink="true">/2018/05/16/my-first-model-boat-race.html</guid>
+            <description>&lt;p&gt;做个船模比赛心好累&lt;/p&gt;
+
+&lt;h1 id=&quot;前期调试&quot;&gt;前期调试&lt;/h1&gt;
+
+&lt;p&gt;比赛前三周开始调模块，主控芯片采用stm32f407，通讯采用蓝牙串口模块，没用24L01的原因是……没调出来；电机采用2212无刷电机。不得不说，在所有的模块调试里面，通讯是最麻烦的：电机、舵机、两路ADC花了半天就调好了，通讯调了一天半。&lt;/p&gt;
+
+&lt;p&gt;看似把模块组合在一起很简单，但这就是硬件玄学的地方。&lt;/p&gt;
+
+&lt;h1 id=&quot;初赛&quot;&gt;初赛&lt;/h1&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;爆肝调船&quot;&gt;爆肝调船！&lt;/h2&gt;
+
+&lt;p&gt;由于之前没有调过无刷电机（抱歉菜到大家了），一直不知道怎么对频。还是靠着电子科技园的陈大佬带我学会了对频。整个船差不多多能跑起来已经是比赛前一天下午了。但是还是有bug-通讯卡死问题。&lt;/p&gt;
+
+&lt;p&gt;bug没调完，那怎么办呢？当然是熬夜爆肝调啦！&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;boat_img/IMG_20180330_223823.jpg&quot; alt=&quot;IMG_20180330_223823&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;收拾下桌子开始干活！&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;boat_img/IMG_20180331_003516.jpg&quot; alt=&quot;IMG_20180331_003516&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;boat_img/IMG_20180331_055250.jpg&quot; alt=&quot;IMG_20180331_055250&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;不得不说，ddl是第一生产力，一个晚上让船的电机舵机联调成功，使用暴力手段解决了通讯卡死问题，调完了一套备用的蓝牙串口模块（HC-12）&lt;/p&gt;
+
+&lt;p&gt;然而……第二天比赛却因为下雨而推迟了一天…….迟了一天…….了一天…….一天…….天…….&lt;/p&gt;
+
+&lt;p&gt;本来多了一天，以为能让船下水的，结果出现了电机无法调速的bug，在调试的时候把电池电用光了，而且电池被我们榨干用坏了，充不进去电。队友小姐姐就跑出去买电池了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;boat_img/1410803219.jpeg&quot; alt=&quot;1410803219&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;##　下水&lt;/p&gt;
+
+&lt;p&gt;比赛当天才是第一次下水，上午评完外观分（我们的船叫Aurora，嘻嘻），下午我们自己试船（离比赛开始只有4h）。&lt;/p&gt;
+
+&lt;p&gt;没做过船模，不了解电机性能，第一次试的时候，舵机初始化的时候是歪的，h2212的动力太大，我自己操作也不熟悉，推动摇杆，船直接飞了出去。船飞到岸上，把自己的肚子撞裂了……（韵阳小姐姐抱起我们的船跑回去修）&lt;/p&gt;
+
+&lt;p&gt;简单地用热熔胶糊上了裂口处，我们的船又下水了，为了防止船出bug，我们给船装上了安全绳：当船动不了的时候还可以手动把船拉回来。然后一出船，舵机方向还是没摆正，水中乱绕了几圈之后不动了。这时！安全绳的作用就体现了出来。可是不拉不要紧，一拉，由于船受到的是侧面的力，我们的Aurora直接侧翻倒在了水中……&lt;/p&gt;
+
+&lt;p&gt;翻船了之后我们以最快的速度把船拉了回来（电子元件在通电的情况下进水是大忌！），但还是晚了一步。蓝牙的灯已经不亮了，烧模块了哇！但是我还有前面一次调完的HC-12模块，但当时由于卡死问题更严重，所以没有使用。当时情况紧急，心态有点乱，本来也是有HC-05的，但是AT指令输进去之后没有配对成功，心态爆炸。这时也只能死马当活马医了，换上了新的通讯模块之后，电机不转了……&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;boat_img/IMG_20180323_125722.jpg&quot; alt=&quot;IMG_20180323_125722&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;电机不转也可以说是电调的问题，本来在设置满油门的时候需要设置初始化，设置完一次之后就不用再设置了，但现在每次掉电之后都需要重新设置油门量程。&lt;/p&gt;
+
+&lt;p&gt;H2212实在是太强劲了，就跟脱缰的野马一样，速度太快，完全控制不住。这种比赛比的是稳定性，所以临时换电机，换成了动力较弱的A2212电机。&lt;/p&gt;
+
+&lt;p&gt;缝缝补补总算是把下水发现的问题全改了。&lt;/p&gt;
+
+&lt;h2 id=&quot;赛场&quot;&gt;赛场&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;boat_img/IMG20180421154125.jpg&quot; alt=&quot;IMG20180421154125&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;一直没时间去解决的是遥控器的电源问题，为了解决这个问题，本项目组采用了“基于surface pro3的船模遥控系统”。好吧，其实就是用电脑的usb供电。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;boat_img/IMG_20180401_182739.jpg&quot; alt=&quot;IMG_20180401_182739&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;作为一个操作手，我的练习时间还是太少了，但是我们的船跑的慢啊，按错一个键也没啥关系，往回拉就没事了。初赛只是想苟过去，最后的晋级名单也验证了我的想法－所有跑完赛道的船全都进决赛了。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;boat_img/IMG_20180401_124840.jpg&quot; alt=&quot;IMG_20180401_124840&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;boat_img/IMG_20180401_184633.jpg&quot; alt=&quot;IMG_20180401_184633&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;决赛&quot;&gt;决赛&lt;/h1&gt;
+
+&lt;h1 id=&quot;其他&quot;&gt;其他&lt;/h1&gt;
+</description>
+            <pubDate>Wed, 16 May 2018 00:00:00 +0800</pubDate>
+        </item>
+        
+        <item>
+            <title>Hello World</title>
+            <link>/2018/04/30/hello-world.html</link>
+            <guid isPermaLink="true">/2018/04/30/hello-world.html</guid>
+            <description>&lt;p&gt;个人博客上线啦！&lt;/p&gt;
 
 &lt;h3 id=&quot;我是谁&quot;&gt;&lt;strong&gt;我是谁?&lt;/strong&gt;&lt;/h3&gt;
 
@@ -44,10 +121,8 @@
 
 &lt;p&gt;  每篇博文都有评论功能，大家有啥想法可以评论哈，禁止乱膜陆大佬（陆大佬是谁？喵喵瞄？）&lt;/p&gt;
 </description>
-                <pubDate>Mon, 30 Apr 2018 00:00:00 +0800</pubDate>
-                <link>http://localhost:4000/2018/04/30/hello-world.html</link>
-                <guid isPermaLink="true">http://localhost:4000/2018/04/30/hello-world.html</guid>
-            </item>
+            <pubDate>Mon, 30 Apr 2018 00:00:00 +0800</pubDate>
+        </item>
         
     </channel>
 </rss>

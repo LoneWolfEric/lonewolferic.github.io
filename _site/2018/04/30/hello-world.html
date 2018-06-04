@@ -4,10 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <!-- JQuery (used for bootstrap and jekyll search) -->
-    <script src="/assets/js/jquery-3.2.1.min.js" ></script>
-    
-    <!-- Main JS (navbar.js and katex_init.js)-->
+    <!-- Main JS (navbar.js, katex_init.js and masonry_init.js)-->
     <script defer=true src="/assets/js/main.min.js"></script>
     
     <!-- CSS -->
@@ -24,7 +21,7 @@
 
     <!-- Font Awesome -->
     <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/vendor/font-awesome.min.css">
 
     <!-- Google Fonts -->
     
@@ -33,10 +30,8 @@
 
     <!-- KaTeX 0.8.3 -->
     
-    <!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/katex.min.css">
-    <script src="/assets/js/katex.min.js">
+    <link rel="stylesheet" type="text/css" href="/assets/css/vendor/katex.min.css">
+    <script src="/assets/js/vendor/katex.min.js">
     </script>
     
 
@@ -71,7 +66,7 @@
           s.parentNode.insertBefore(hm, s);
         })();
     </script>
-        
+    
     <!-- seo tags -->
     <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Hello World | 孤狼</title>
@@ -117,14 +112,16 @@
     </a>
     
     <!-- Menu -->
-    <ul>
+    <ul class="hide">
+        <!-- Auto Generation of NORMAL pages in the navbar -->
         
         
         
         
-        <li class="separator">
-            |
-        </li>
+        
+        
+        
+        <li class="separator"> | </li>
         <li>
             <a class="clear" href="/about/">
                 About
@@ -138,6 +135,32 @@
         
         
         
+        <li class="separator"> | </li>
+        <li>
+            <a class="clear" href="/gallery/">
+                Gallery
+            </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="separator"> | </li>
+        <li>
+            <a class="clear" href="/portfolio/">
+                Portfolio
+            </a>
+        </li>
+        
+        
+        
+        
         
         
         
@@ -145,35 +168,25 @@
         
          
         
-        <li class="separator">
-            |
-        </li>
-        <li>
-            <a class="clear" href="http://localhost:4000/portfolio">
-                Portfolio
-            </a>
-        </li>
+        <!-- Auto Generation of SPECIAL pages in the navbar -->
         
+          
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" href="http://localhost:4000/search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+            </li>
+          
         
-        <li class="separator">
-            |
-        </li>
-        <li>
-            <a class="clear" href="http://localhost:4000/search">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
-        </li>
-        
-        
-        <li class="separator">
-            |
-        </li>
-        <li>
-            <a class="clear" href="http://localhost:4000/tags">
-                <i class="fa fa-tags" aria-hidden="true"></i>
-            </a>
-        </li>
-        
+          
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" href="http://localhost:4000/tags">
+                    <i class="fa fa-tags" aria-hidden="true"></i>
+                </a>
+            </li>
+          
         
     </ul>
         
@@ -223,6 +236,49 @@
 
 <p>  每篇博文都有评论功能，大家有啥想法可以评论哈，禁止乱膜陆大佬（陆大佬是谁？喵喵瞄？）</p>
 </section>
+  
+  <!-- Social media shares -->
+  <div class="share-buttons">
+    <ul class="share-buttons">
+        <div class="meta">Share</div>
+        
+        <li>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2018/04/30/hello-world.html" target="_blank" title="Share on Facebook">
+			<i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i>
+			<span class="sr-only">Share on Facebook</span>
+		</a>
+        </li>
+         
+        <li>
+            <a href="https://twitter.com/intent/tweet?source=http://localhost:4000/2018/04/30/hello-world.html&text=Hello World%20%7C%20孤狼:%20http://localhost:4000/2018/04/30/hello-world.html" target="_blank" title="Tweet">
+			<i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>
+			<span class="sr-only">Tweet</span>
+		</a>
+        </li>
+         
+        <li>
+            <a href="https://plus.google.com/share?url=http://localhost:4000/2018/04/30/hello-world.html" target="_blank" title="Share on Google+">
+			<i class="fa fa-google-plus-square fa-2x" aria-hidden="true"></i>
+			<span class="sr-only">Share on Google+</span>
+		</a>
+        </li>
+            
+        <li>
+            <a href="http://www.reddit.com/submit?url=http://localhost:4000/2018/04/30/hello-world.html&title=Hello World%20%7C%20孤狼" target="_blank" title="Share on Reddit">
+			<i class="fa fa-reddit-square fa-2x" aria-hidden="true"></i>
+			<span class="sr-only">Share on Reddit</span>
+		</a>
+        </li>
+           
+        <li>
+            <a href="mailto:?subject=Hello World%20%7C%20孤狼&body=:%20http://localhost:4000/2018/04/30/hello-world.html" target="_blank" title="Email">
+			<i class="fa fa-envelope-square fa-2x" aria-hidden="true"></i>
+			<span class="sr-only">Email</span>
+		</a>
+        </li>
+        
+    </ul>
+</div>
    
    <!-- Tag list -->
   
@@ -274,6 +330,13 @@
 
   <div id="post-nav">
   
+  
+  <div id="next-post" class="post-nav-post">
+      <p>Next post</p>
+      <a href="/2018/05/16/my-first-model-boat-race.html">
+        纪念第一次参加技术类比赛：船模大赛
+      </a>
+  </div>
   
 </div>
 

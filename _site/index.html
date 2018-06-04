@@ -4,10 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <!-- JQuery (used for bootstrap and jekyll search) -->
-    <script src="/assets/js/jquery-3.2.1.min.js" ></script>
-    
-    <!-- Main JS (navbar.js and katex_init.js)-->
+    <!-- Main JS (navbar.js, katex_init.js and masonry_init.js)-->
     <script defer=true src="/assets/js/main.min.js"></script>
     
     <!-- CSS -->
@@ -24,7 +21,7 @@
 
     <!-- Font Awesome -->
     <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/vendor/font-awesome.min.css">
 
     <!-- Google Fonts -->
     
@@ -33,10 +30,8 @@
 
     <!-- KaTeX 0.8.3 -->
     
-    <!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/katex.min.css">
-    <script src="/assets/js/katex.min.js">
+    <link rel="stylesheet" type="text/css" href="/assets/css/vendor/katex.min.css">
+    <script src="/assets/js/vendor/katex.min.js">
     </script>
     
 
@@ -71,7 +66,7 @@
           s.parentNode.insertBefore(hm, s);
         })();
     </script>
-        
+    
     <!-- seo tags -->
     <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>孤狼 | 生命不息，折腾不止</title>
@@ -115,14 +110,16 @@
     </a>
     
     <!-- Menu -->
-    <ul>
+    <ul class="hide">
+        <!-- Auto Generation of NORMAL pages in the navbar -->
         
         
         
         
-        <li class="separator">
-            |
-        </li>
+        
+        
+        
+        <li class="separator"> | </li>
         <li>
             <a class="clear" href="/about/">
                 About
@@ -136,6 +133,32 @@
         
         
         
+        <li class="separator"> | </li>
+        <li>
+            <a class="clear" href="/gallery/">
+                Gallery
+            </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="separator"> | </li>
+        <li>
+            <a class="clear" href="/portfolio/">
+                Portfolio
+            </a>
+        </li>
+        
+        
+        
+        
         
         
         
@@ -143,35 +166,25 @@
         
          
         
-        <li class="separator">
-            |
-        </li>
-        <li>
-            <a class="clear" href="http://localhost:4000/portfolio">
-                Portfolio
-            </a>
-        </li>
+        <!-- Auto Generation of SPECIAL pages in the navbar -->
         
+          
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" href="http://localhost:4000/search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+            </li>
+          
         
-        <li class="separator">
-            |
-        </li>
-        <li>
-            <a class="clear" href="http://localhost:4000/search">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
-        </li>
-        
-        
-        <li class="separator">
-            |
-        </li>
-        <li>
-            <a class="clear" href="http://localhost:4000/tags">
-                <i class="fa fa-tags" aria-hidden="true"></i>
-            </a>
-        </li>
-        
+          
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" href="http://localhost:4000/tags">
+                    <i class="fa fa-tags" aria-hidden="true"></i>
+                </a>
+            </li>
+          
         
     </ul>
         
@@ -189,6 +202,48 @@
   
 
   <div class="posts">
+    
+    <div class="post-teaser">
+       
+      <div class="post-img">
+         <img src="/_posts/boat_img/1526477179153.jpeg">
+      </div>
+      
+      <span>
+          <header>
+            <h1>
+              <a class="post-link" href="/2018/05/16/my-first-model-boat-race.html">
+                纪念第一次参加技术类比赛：船模大赛
+              </a>
+            </h1>
+            <p class="meta">
+              May 16, 2018
+            </p>
+          </header>
+          <div class="excerpt">
+              做个船模比赛心好累
+
+
+            <!--做个船模比赛心好累
+
+前期调试
+
+比赛前三周开始调模块，主控芯片采用stm32f407，通讯采用蓝牙串口模块，没用24L01的原因是……没调出来；电机采用2212无刷电机。不得不说，在所有的模块调试里面，通讯是最麻烦的：电机、舵机、两路ADC花了半天就调好了，通讯调了一天半。
+
+看似把模块组合在一起很简单，但这就是硬件玄学的地方。
+
+初赛
+
+
+爆肝调船！
+
+由于之前没有调过无刷电机（抱歉菜到大家了），一直不知道怎么对频。还是靠着电子科技园的陈大佬带我学会了对频。整个船差不多多能跑起来已经是...-->
+            <!--<a class="button" href="/2018/05/16/my-first-model-boat-race.html">
+              Continue reading
+            </a>-->
+          </div>
+      </span>
+    </div>
     
     <div class="post-teaser">
       

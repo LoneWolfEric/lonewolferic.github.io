@@ -4,10 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <!-- JQuery (used for bootstrap and jekyll search) -->
-    <script src="/assets/js/jquery-3.2.1.min.js" ></script>
-    
-    <!-- Main JS (navbar.js and katex_init.js)-->
+    <!-- Main JS (navbar.js, katex_init.js and masonry_init.js)-->
     <script defer=true src="/assets/js/main.min.js"></script>
     
     <!-- CSS -->
@@ -24,7 +21,7 @@
 
     <!-- Font Awesome -->
     <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/vendor/font-awesome.min.css">
 
     <!-- Google Fonts -->
     
@@ -33,10 +30,8 @@
 
     <!-- KaTeX 0.8.3 -->
     
-    <!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="/assets/css/katex.min.css">
-    <script src="/assets/js/katex.min.js">
+    <link rel="stylesheet" type="text/css" href="/assets/css/vendor/katex.min.css">
+    <script src="/assets/js/vendor/katex.min.js">
     </script>
     
 
@@ -71,7 +66,7 @@
           s.parentNode.insertBefore(hm, s);
         })();
     </script>
-        
+    
     <!-- seo tags -->
     <!-- Begin Jekyll SEO tag v2.4.0 -->
 <title>Portfolio | 孤狼</title>
@@ -115,14 +110,16 @@
     </a>
     
     <!-- Menu -->
-    <ul>
+    <ul class="hide">
+        <!-- Auto Generation of NORMAL pages in the navbar -->
         
         
         
         
-        <li class="separator">
-            |
-        </li>
+        
+        
+        
+        <li class="separator"> | </li>
         <li>
             <a class="clear" href="/about/">
                 About
@@ -136,6 +133,32 @@
         
         
         
+        <li class="separator"> | </li>
+        <li>
+            <a class="clear" href="/gallery/">
+                Gallery
+            </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="separator"> | </li>
+        <li>
+            <a class="clear" href="/portfolio/">
+                Portfolio
+            </a>
+        </li>
+        
+        
+        
+        
         
         
         
@@ -143,35 +166,25 @@
         
          
         
-        <li class="separator">
-            |
-        </li>
-        <li>
-            <a class="clear" href="http://localhost:4000/portfolio">
-                Portfolio
-            </a>
-        </li>
+        <!-- Auto Generation of SPECIAL pages in the navbar -->
         
+          
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" href="http://localhost:4000/search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </a>
+            </li>
+          
         
-        <li class="separator">
-            |
-        </li>
-        <li>
-            <a class="clear" href="http://localhost:4000/search">
-                <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
-        </li>
-        
-        
-        <li class="separator">
-            |
-        </li>
-        <li>
-            <a class="clear" href="http://localhost:4000/tags">
-                <i class="fa fa-tags" aria-hidden="true"></i>
-            </a>
-        </li>
-        
+          
+            <li class="separator"> | </li>
+            <li>
+                <a class="clear" href="http://localhost:4000/tags">
+                    <i class="fa fa-tags" aria-hidden="true"></i>
+                </a>
+            </li>
+          
         
     </ul>
         
@@ -179,40 +192,37 @@
 </header>
 
     <div class="content">
-      <!-- Bootstrap-3.3.7 isolation CSS -->
-<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap-iso.min.css">
-
-<!-- Bootstrap JS -->
-<script src="/assets/js/bootstrap.min.js"></script>
-
-<article class="feature-image" >
-    <header id="main" style="background-image: url('/assets/img/pexels/computer.jpeg')">
-        <h1 class="title">Portfolio</h1> 
-        <h2 class="subtitle">You may admire when ready</h2>
-    </header>
-
+      <article class="feature-image">
+  <header id="main" style="background-image: url('/assets/img/pexels/computer.jpeg')">
+    <h1 id="Portfolio" class="title">
+        Portfolio
+    </h1>
     
+    
+    <h2 class="subtitle">You may admire when ready</h2>
+    
+      
+  </header>
+  <section class="post-content"><!-- Portfolio Grid Section -->
 
-    <!-- Bootstrap will work within this div -->
-    <section>
-        <div class="bootstrap-iso">
-            <div class="col-md-1"></div>
-            <div class="col-md-10 centered">
-            <!-- Portfolio Grid Section -->
-<section class="portfolio">
-    <div class="row">
-        
-    </div>
+<div class="portfolio-grid">
+    
+</div>
 </section>
-
-            </div>    
-            <div class="col-md-1"></div>
-        </div>
-    </section>
-
     
+    
+  <!-- Tag list for portfolio -->
+  
+  
+
+
+<footer>
+  <div class="tag-list"></div>
+</footer>
+
     
 </article>
+
     </div>
     
 <footer class="site-footer">
