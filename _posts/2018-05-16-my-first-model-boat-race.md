@@ -3,7 +3,7 @@ layout: post
 title: "纪念第一次参加技术类比赛：船模大赛"
 feature-img: "img/boat_img/1526477179153.jpeg"
 thumbnail: "img/boat_img/1526477179153.jpeg"
-tags: 嵌入式, 控制
+tags: 嵌入式 控制
 ---
 
 做个船模比赛心好累
