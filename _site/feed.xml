@@ -1,19 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>孤狼</title>
-        <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-        <link>http://localhost:4000/</link>
-        <description></description>
-        <pubDate>Tue, 05 Jun 2018 14:00:36 +0800</pubDate>
+  <channel>
+    <title>Eric</title>
+    <description>生命不息，折腾不止</description>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 07 Jul 2018 03:12:37 +0930</pubDate>
+    <lastBuildDate>Sat, 07 Jul 2018 03:12:37 +0930</lastBuildDate>
+    <generator>Jekyll v3.7.3</generator>
+    
+      <item>
+        <title>学傻了的对话（不定时更新）</title>
+        <description>&lt;p&gt;芝士就是力量！&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;和张大仙一起去校外吃铁板烧，他先把选好的菜给老板，我后给，结果我的铁板烧先烧好。&lt;/p&gt;
+
+&lt;p&gt;张：为什么你在我之后给的，结果先烧好了？&lt;/p&gt;
+
+&lt;p&gt;我：也许他们是用堆栈烧饭的吧！&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;高大佬又双叒叕在说自己要学不完了&lt;/p&gt;
+
+&lt;p&gt;（空间）&lt;/p&gt;
+
+&lt;p&gt;我：我也要学不完了&lt;/p&gt;
+
+&lt;p&gt;高：大佬说笑了，你们各个都考的比我高&lt;/p&gt;
+
+&lt;p&gt;我：上学期成绩谁好你心里有点ACD数&lt;/p&gt;
+
+&lt;p&gt;高：上学期关这学期什么事&lt;/p&gt;
+
+&lt;p&gt;我：你以为你是非因果系统啊！（这里其实说错了，暴露学渣本质了……）&lt;/p&gt;
+
+&lt;p&gt;詹：因果LTI&lt;/p&gt;
+
+&lt;p&gt;我：不对这个应该是记忆系统……&lt;/p&gt;
+</description>
+        <pubDate>Sun, 01 Jul 2018 00:00:00 +0930</pubDate>
+        <link>http://localhost:4000/life/2018/07/01/study-to-death.html</link>
+        <guid isPermaLink="true">http://localhost:4000/life/2018/07/01/study-to-death.html</guid>
         
-        <item>
-            <title>纪念第一次参加技术类比赛：船模大赛</title>
-            <link>/2018/05/16/my-first-model-boat-race.html</link>
-            <guid isPermaLink="true">/2018/05/16/my-first-model-boat-race.html</guid>
-            <description>&lt;p&gt;做个船模比赛心好累&lt;/p&gt;
+        <category>杂谈</category>
+        
+        
+        <category>Life</category>
+        
+      </item>
+    
+      <item>
+        <title>关于单片机初始化的注意事项</title>
+        <description>&lt;h1 id=&quot;正题&quot;&gt;正题&lt;/h1&gt;
+
+&lt;p&gt;为了让单片机完成我们所需的功能，我们每次都会使用到很多的外设，并且在控制系统中，为了保证控制的时效性，有一个专门的定时器来产生中断，进入控制环——controlloop，在主函数的循环中则放入不痛不痒的程序——led闪烁之类的。一个标准的单片机程序流程为：初始化各个外设，进入while(1)循环，定时器定时产生中断，在中断中，完成控制任务，回到while(1)，再进入下一个中断，解算姿态……以此循环往复。（本程序中TIM14产生定时中断）&lt;/p&gt;
+
+&lt;p&gt;在外设数量较多，并有可能又要添加新外设的情况下，我们通常使用BSP（board support package ，板级支持包 ）来管理外设。主要的好处是不用每次添加新外设的时候在每个外设的程序前面去包含新的外设头文件。&lt;/p&gt;
+
+&lt;p&gt;所以我们的程序一般就变成了这样。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\img\an_bug_about_microcontroller_initalization_img\捕获3.PNG&quot; alt=&quot;捕获3&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;bsp_Init中初始化全部外设。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\img\an_bug_about_microcontroller_initalization_img\捕获2.PNG&quot; alt=&quot;捕获2&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这看起来是一个没问题的程序，但是实际运行的时候，却跑不起来。&lt;/p&gt;
+
+&lt;h1 id=&quot;bug在哪里呢&quot;&gt;BUG在哪里呢？&lt;/h1&gt;
+
+&lt;p&gt;bug在于初始化的顺序，以上面的程序为例，运行之后发现程序卡住了，进入debug发现程序卡死在这里，这是干什么用的呢？printf的发送程序，等待发送完成的信号。为什么没等到发送完成呢？因为串口都还没初始化啊！&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\img\an_bug_about_microcontroller_initalization_img\选区_022.jpg&quot; alt=&quot;选区_022.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;正常的程序，运行流程图应该是这样的：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\img\an_bug_about_microcontroller_initalization_img\捕获4.PNG&quot; alt=&quot;捕获4&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这个错误的程序，运行流程图是这样的：（外设2依然会初始化完成，但在如果在还没初始化完成的时候就进入中断，就会出现问题）&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\img\an_bug_about_microcontroller_initalization_img\捕获6.PNG&quot; alt=&quot;捕获6&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;问题出现在，控制程序controlloop是肯定要用到外设的——串口，ADC之类的。如果过早进入定时器中断，外设还未初始化完成，就会出现程序轮询一直等相应的情况——等待串口数据发送完成，等待ADC采样完成（程序卡死一般都是因为while(xx == 1)这句等待而导致的）。但是其实根本没法完成，因为这些还没开机初始化呢。&lt;/p&gt;
+
+&lt;p&gt;所以，在单片机程序中，产生定时器定时中断的timer必须放在最后初始化。如下图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;\img\an_bug_about_microcontroller_initalization_img\捕获7.PNG&quot; alt=&quot;捕获7&quot; /&gt;&lt;/p&gt;
+</description>
+        <pubDate>Sun, 17 Jun 2018 00:00:00 +0930</pubDate>
+        <link>http://localhost:4000/embedded/2018/06/17/a-bug-about-microcontroller-initalization.html</link>
+        <guid isPermaLink="true">http://localhost:4000/embedded/2018/06/17/a-bug-about-microcontroller-initalization.html</guid>
+        
+        <category>嵌入式</category>
+        
+        
+        <category>Embedded</category>
+        
+      </item>
+    
+      <item>
+        <title>记第一次参加技术类比赛：船模大赛</title>
+        <description>&lt;p&gt;做个船模比赛心好累&lt;/p&gt;
 
 &lt;h1 id=&quot;前期调试&quot;&gt;前期调试&lt;/h1&gt;
+
+&lt;hr /&gt;
 
 &lt;p&gt;比赛前三周开始调模块，主控芯片采用stm32f407，通讯采用蓝牙串口模块，没用24L01的原因是……没调出来；电机采用2212无刷电机。不得不说，在所有的模块调试里面，通讯是最麻烦的：电机、舵机、两路ADC花了半天就调好了，通讯调了一天半。&lt;/p&gt;
 
@@ -22,6 +116,7 @@
 &lt;h1 id=&quot;初赛&quot;&gt;初赛&lt;/h1&gt;
 
 &lt;hr /&gt;
+
 &lt;h2 id=&quot;爆肝调船&quot;&gt;爆肝调船！&lt;/h2&gt;
 
 &lt;p&gt;由于之前没有调过无刷电机（抱歉菜到大家了），一直不知道怎么对频。还是靠着电子科技园的陈大佬带我学会了对频。整个船差不多多能跑起来已经是比赛前一天下午了。但是还是有bug-通讯卡死问题。&lt;/p&gt;
@@ -80,16 +175,26 @@
 
 &lt;h1 id=&quot;决赛&quot;&gt;决赛&lt;/h1&gt;
 
+&lt;hr /&gt;
+
 &lt;h1 id=&quot;其他&quot;&gt;其他&lt;/h1&gt;
+
+&lt;hr /&gt;
 </description>
-            <pubDate>Wed, 16 May 2018 00:00:00 +0800</pubDate>
-        </item>
+        <pubDate>Wed, 16 May 2018 00:00:00 +0930</pubDate>
+        <link>http://localhost:4000/course/2018/05/16/my-first-model-boat-race.html</link>
+        <guid isPermaLink="true">http://localhost:4000/course/2018/05/16/my-first-model-boat-race.html</guid>
         
-        <item>
-            <title>Hello World</title>
-            <link>/2018/04/30/hello-world.html</link>
-            <guid isPermaLink="true">/2018/04/30/hello-world.html</guid>
-            <description>&lt;p&gt;个人博客上线啦！&lt;/p&gt;
+        <category>嵌入式</category>
+        
+        
+        <category>Course</category>
+        
+      </item>
+    
+      <item>
+        <title>Hello World</title>
+        <description>&lt;p&gt;个人博客上线啦！&lt;/p&gt;
 
 &lt;h3 id=&quot;我是谁&quot;&gt;&lt;strong&gt;我是谁?&lt;/strong&gt;&lt;/h3&gt;
 
@@ -103,14 +208,6 @@
 
 &lt;p&gt;  还有就是羡慕各位大佬都有自己的网站，羡慕嫉妒恨，所以我也搞一个，哼～&lt;/p&gt;
 
-&lt;h3 id=&quot;为什么要叫孤狼&quot;&gt;&lt;strong&gt;为什么要叫孤狼?&lt;/strong&gt;&lt;/h3&gt;
-
-&lt;p&gt;  孤狼，意为桀骜不训，永不低头。向往着真理与正义，却又承受着自我求索的孤寂。独行，却不孤寂；狂野，却又不无情。&lt;/p&gt;
-
-&lt;p&gt;  好吧，以上内容皆为扯淡，孤狼的真正含义是这样的：来跟我读：孤(single)狼(dog)&lt;/p&gt;
-
-&lt;p&gt;  觉得叫“孤狼”不顺口叫“表表”也行&lt;/p&gt;
-
 &lt;h3 id=&quot;为什么不去开公众号&quot;&gt;&lt;strong&gt;为什么不去开公众号?&lt;/strong&gt;&lt;/h3&gt;
 
 &lt;p&gt;  如果开了微信公众号，由于爸妈用的都是微信，so～想像一个场景：我爸打开微信，看到自己儿子的公众号又出了一篇新文章，他打开一看，儿子又烧了一块板子，嗯～这次经验总结的很好。然后就转发到自己的朋友圈（日常秀娃）下面的评论区就会出现各种emmmm……你们懂的。尴尬癌都要犯了…….&lt;/p&gt;
@@ -123,8 +220,16 @@
 
 &lt;p&gt;  每篇博文都有评论功能，大家有啥想法可以评论哈，禁止乱膜陆大佬（陆大佬是谁？喵喵瞄？）&lt;/p&gt;
 </description>
-            <pubDate>Mon, 30 Apr 2018 00:00:00 +0800</pubDate>
-        </item>
+        <pubDate>Mon, 30 Apr 2018 00:00:00 +0930</pubDate>
+        <link>http://localhost:4000/life/2018/04/30/hello-world.html</link>
+        <guid isPermaLink="true">http://localhost:4000/life/2018/04/30/hello-world.html</guid>
         
-    </channel>
+        <category>杂谈</category>
+        
+        
+        <category>Life</category>
+        
+      </item>
+    
+  </channel>
 </rss>

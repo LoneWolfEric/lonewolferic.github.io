@@ -1,0 +1,29 @@
+# blog page sections
+- name: Blog
+  href: /blog/
+
+# edit following lines to custom your blog page, make sure name is the same as href but capitalized first letter(except HTML)
+- name: Embedded
+  href: /embedded/
+
+- name: Control
+  href: /control/
+
+- name: Ml
+  href: /ml/
+
+- name: Spyder
+  href: /spyder/
+  
+- name: Course
+  href: /course/
+
+- name: Management
+  href: /management/
+
+- name: Life
+  href: /life/
+
+# Don't display donation page: change donation to off at file '_config.yml'
+- name: Donate
+  href: /donate/
