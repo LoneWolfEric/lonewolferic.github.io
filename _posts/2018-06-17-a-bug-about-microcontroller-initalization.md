@@ -1,10 +1,11 @@
 ---
 layout: post
 title: "关于单片机初始化的注意事项"
+date: 2018-06-17
+categories: [Embedded]
 tags: 嵌入式
+icon: icon-life
 ---
-
-一晚上就为了整出这个“玄学”bug。
 
 # 正题
 
@@ -27,7 +28,7 @@ bsp_Init中初始化全部外设。
 
 bug在于初始化的顺序，以上面的程序为例，运行之后发现程序卡住了，进入debug发现程序卡死在这里，这是干什么用的呢？printf的发送程序，等待发送完成的信号。为什么没等到发送完成呢？因为串口都还没初始化啊！
 
-![捕获](\img\an_bug_about_microcontroller_initalization_img\捕获.PNG)
+![选区_022.jpg](\img\an_bug_about_microcontroller_initalization_img\选区_022.jpg)
 
 正常的程序，运行流程图应该是这样的：
 

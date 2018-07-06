@@ -1,118 +1,70 @@
-# SITE CONFIGURATION
-baseurl: ""
-url: "https://lonewolferic.github.io"
-title: 孤狼 # site's title
-description: "生命不息，折腾不止" # used by search engines
+# Welcome to Jekyll!
 
+# Website settings
+title: Eric
+description: 生命不息，折腾不止
+keywords: Jack,Jalpc,blog,Jekyll,github,gh-pages
+baseurl:   # if you have suburl as homepage like '/homepage', please change it to '/homepage' and your repo's name should be 'homepage'
+url: https://lonewolferic.github.io  # url should be 'http://<github_username>.github.io/homepage' as before
+# url: http://127.0.0.1:4000
+img_path: /Jalpc/static/assets/img/blog  # url should be '/homepage/static/assets/img/blog' as before
 
-# THEME-SPECIFIC CONFIGURATION
-theme_settings:
-  # Meta
-  title: 孤狼 # blog's title
-  avatar: assets/img/triangle.svg
-  favicon: assets/favicon.ico
-  gravatar: 871855626@qq.com# Email MD5 hash
+# author -- index page "about me" section
+author:  # change following line to your infomation.
+  name: Eric  # Be used at blog posts' author.
+  first_name: Eric  # Be used at index page about me section.
+  last_name:   # Be used at index page about me section.
+  avatar: /static/assets/img/landing/triangle.svg  # upload your avatar at directory and edit it.
+  github_username: lonewolferic  # Leave blank if you don't have now
+  linkedin_id:  # Leave blank if you don't have now
+  facebook_username:   # Leave blank if you don't have now
+  twitter_username:   # Leave blank if you don't have now
+  email: 871855626@qq.com  # Leave blank if you don't have now
+  cv:   # An online CV can be printed as PDF, leave blank if you don't have now
+  # skill icons are on avatar's left and right side. Reference urls are http://fontawesome.io/ and http://fizzed.com/oss/font-mfizz
+  skill_icon1:
+    - name: icon-apache
+    - name: fa-linux
+  skill_icon2:
+    - name: fa-linux
+    - name: icon-apache
+  desc: 四川大学某菜鸡工科狗.  # Describe yourself.
 
-  # Header and footer text
-  header_text: > #two or three lines to describe your site
-     <h1><strong>博客</strong></h1>
-     <p>纸上得来终觉浅&emsp;绝知此事要躬行</p>
-  header_text_feature_image: assets/img/pexels/triangular.jpeg
-  footer_text: Copyright © 2018 LoneWolf |
-   Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+# comment
+disqus:  # if you wanna comment feature, go to https://disqus.com/ to get your configuration; if not, comment following two lines.
+  name: eric-9
 
-  # Icons
-  rss: true  # Make sure you created a feed.xml with feed.xml layout
-  email_address: 871855626@qq.com # Full email address, e.g. "sam@example.com"
-  behance:
-  bitbucket:
-  dribbble:
-  facebook:
-  flickr:
-  gitlab:
-  github: "lonewolferic"
-  google_plus:
-  instagram:
-  keybase:
-  linkedin:  # Full URL
-  pinterest:
-  reddit:
-  soundcloud:
-  stack_exchange:  # Full URL
-  steam:
-  tumblr:
-  twitter: # "twitter username"
-  vimeo:
-  wordpress:
-  youtube:
-  
-  # Sharing options
-  share_buttons:
-    facebook: true
-    twitter: true
-    google_plus: true
-    tumblr:
-    pinterest:
-    pocket:
-    reddit: true
-    linkedin:
-    wordpress:
-    email: true
+# analytics
+## google analytics
+ga:  # if you wanna this feature, go to https://www.google.com/analytics/ to get your configuration; if not, comment following line.
+  id: UA-117551945-1
 
-  # Scripts / Features 
-  google_analytics: UA-117551945-1 # Tracking ID, e.g. "UA-000000-01"
-  disqus_shortname: eric-9
-  katex: true # Enable if using math markup
-  
-  special_page:
-    search: 
-      icon: "search" # Assuming page link and icon are the same
-      enabled: true
-    tags:
-      icon: "tags"
-      enabled: true
-  
-  # Localization strings
-  str_follow_on: "Follow on"
-  str_rss_follow: "Follow RSS feed"
-  str_share_on: "Share on"
-  str_add_to: "Add to"
-  str_email: "Email"
-  str_tweet: "Tweet"
-  str_pin_it: "Pin it"
-  str_next_post: "Next post"
-  str_previous_post: "Previous post"
-  str_next_page: "Next"
-  str_previous_page: "Prev"
-  str_continue_reading: "Continue reading"
-  str_javascript_required_disqus: "Please enable JavaScript to view comments."
+## google optimize
+go:
+  # id:
 
-  # Colours, typography and padding
-  # Open the "_sass > base" folder, and open "_variables.scss"
-  google_fonts: "Source+Sans+Pro:400,700,700italic,400italic"
+## growingIO
+gio:  # if you wanna this feature, go to https://www.growingio.com/ to get your configuration; if not, comment following line.
+  # id:
 
-  # Post navigation
-  post_navigation: true
-  
-  
-# PAGINATION
-paginate: 5
-paginate_path: "blog/page:num"
+## donation
+donation: off  # type 'on'/'off' to choice display donation button at post page or not
 
+## carousels
+index_carousel: on  # index page carousel switch
+blog_carousel: on  # blog page carousel switch
 
-# PORTFOLIO
-collections:
-  portfolio:
-    output: true
-    permalink: /:collection/:name
-
-
-# BUILD SETTINGS
-markdown: kramdown
-highlighter: rouge
+# scss
 sass:
-  sass_dir: _sass
-  style: :compressed
-plugins: [jekyll-paginate, jekyll-seo-tag]
-#theme: type-on-strap # Uncomment if using the theme as a jekyll theme gem
-exclude: ["Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", "LICENSE", "README.md", "screenshot.png", "package.json", "node_modules", "gulpfile.js", ".idea/*"]
+  style: compressed
+
+# Build settings
+encoding: utf-8
+
+# other settings
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+

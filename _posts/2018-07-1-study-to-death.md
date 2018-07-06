@@ -1,7 +1,10 @@
 ---
 layout: post
 title: "学傻了的对话（不定时更新）"
+date: 2018-07-01
+categories: [Life]
 tags: 杂谈
+icon: icon-life
 ---
 
 芝士就是力量！

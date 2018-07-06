@@ -1,8 +1,12 @@
 ---
 layout: post
 title: "Hello World"
-feature-img: "assets/img/pexels/blog.png"
+date:   2018-04-30
+desc: "hello world"
+keywords: "hello world"
+categories: [Life]
 tags: 杂谈
+icon: icon-html
 ---
 
 个人博客上线啦！
@@ -18,14 +22,6 @@ tags: 杂谈
 &emsp;&emsp;其次也是想好好记录一下自己的生活，自己做东西的经验，对人生的看法之类的
 
 &emsp;&emsp;还有就是羡慕各位大佬都有自己的网站，羡慕嫉妒恨，所以我也搞一个，哼～
-
-### **为什么要叫孤狼?**
-
-&emsp;&emsp;孤狼，意为桀骜不训，永不低头。向往着真理与正义，却又承受着自我求索的孤寂。独行，却不孤寂；狂野，却又不无情。
-
-&emsp;&emsp;好吧，以上内容皆为扯淡，孤狼的真正含义是这样的：来跟我读：孤(single)狼(dog)
-
-&emsp;&emsp;觉得叫“孤狼”不顺口叫“表表”也行
 
 ### **为什么不去开公众号?**
 

@@ -1,0 +1,9 @@
+# carousel banners section
+# Add items for each banner image in the carousel
+#
+# Images are expected to be located in `static/assets/img/`.
+- src: landing/选区_006.jpg
+  title: SiChuan University
+
+- src: landing/选区_008.jpg
+  title: RoboMaster

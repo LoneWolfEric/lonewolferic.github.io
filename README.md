@@ -1,6 +1,6 @@
-# 孤狼博客
+# 博客
 
-大家好，我是孤狼，这里是我的个人博客网站，偶尔写点文章。
+大家好，这里是我的个人博客网站，偶尔写点文章。
 
 经历了两天的模改，网站终于上线了，第一次做网站，有很多不足的地方请大家见谅！有错误的地方也请大家指出，谢谢！
 
@@ -10,25 +10,21 @@
 
 ---
 
-## Type on Strap
+# Jalpc. [![Analytics](https://ga-beacon.appspot.com/UA-73784599-1/welcome-page)](https://github.com/jarrekk/Jalpc)
 
-[![Build Status](https://travis-ci.org/Sylhare/Type-on-Strap.svg?branch=master)](https://travis-ci.org/Sylhare/Type-on-Strap) 
-[![Gem Version](https://badge.fury.io/rb/type-on-strap.svg)](https://badge.fury.io/rb/type-on-strap)
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.png?v=103)](https://github.com/ellerbrock/open-source-badge/)
 
-A free and open-source [Jekyll](https://jekyllrb.com) theme. Based on Rohan Chandra [type-theme](https://github.com/rohanchandra/type-theme) with a few new features:
+<https://jarrekk.github.io/Jalpc/>
 
-* Responsive design
-* Portfolio page for your projects
-* Tags compatibility
-* Bootstrap : [Get Bootstrap](http://getbootstrap.com/)
-* Search feature : [Simple-Jekyll-Search](https://github.com/christian-fei/Simple-Jekyll-Search)
-* Math Rendering : [KateX](https://github.com/Khan/KaTeX)
-* Seo Tags : [Jekyll-seo-tag](https://help.github.com/articles/search-engine-optimization-for-github-pages/)
-* Syntax Highlighting: Easily customisable [Base16](https://github.com/chriskempson/base16)
-* Free of rights images from [pexels](https://www.pexels.com/)
+<http://www.jarrekk.com>  -- Personal website
 
-> [Demo](https://sylhare.github.io/Type-on-Strap/)
 
-### License
+# Wiki
 
-[The MIT License (MIT)](https://raw.githubusercontent.com/Sylhare/Type-on-Strap/master/LICENSE)
+* [Multilingual Page](https://github.com/jarrekk/Jalpc/wiki/Multilingual-Page)
+* [How to add posts](https://github.com/jarrekk/Jalpc/wiki/How-to-add-posts)
+* [Change Log](https://github.com/jarrekk/Jalpc/wiki/Change-Log)
+* [Contributors](https://github.com/jarrekk/Jalpc/wiki/Contributors)
+* [Thanks to the following](https://github.com/jarrekk/Jalpc/wiki/Thanks-to-the-following)
