@@ -3,8 +3,7 @@ layout: post
 title: "记第一次参加技术类比赛：船模大赛"
 date:   2018-05-16
 thumbnail: "img/boat_img/1526477179153.jpeg"
-# categories: [Embedded]
-categories: [Course]
+categories: [Embedded]
 tags: 嵌入式
 icon: icon-life
 ---
