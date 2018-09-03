@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>Tag: 嵌入式,BUG | 孤狼博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="嵌入式" />
+    
+    <meta name="description" content="为了让单片机完成我们所需的功能，我们每次都会使用到很多的外设，并且在控制系统中，为了保证控制的时效性，有一个专门的定时器来产生中断，进入控制环——controlloop，在主函数的循环中则放入不痛不痒的程序——led闪烁之类的。一个标准的单片机程序流程为：初始化各个外设，进入while(1)循环，定时器定时产生中断，在中断中，完成控制任务，回到while(1)，再进入下一个中断，解算姿态……以此循">
+<meta name="keywords" content="嵌入式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于单片机初始化的注意事项">
+<meta property="og:url" content="http://lonewolferic.github.io/2018/06/17/a-bug-about-microcontroller-initalization/index.html">
+<meta property="og:site_name" content="孤狼博客">
+<meta property="og:description" content="为了让单片机完成我们所需的功能，我们每次都会使用到很多的外设，并且在控制系统中，为了保证控制的时效性，有一个专门的定时器来产生中断，进入控制环——controlloop，在主函数的循环中则放入不痛不痒的程序——led闪烁之类的。一个标准的单片机程序流程为：初始化各个外设，进入while(1)循环，定时器定时产生中断，在中断中，完成控制任务，回到while(1)，再进入下一个中断，解算姿态……以此循">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://lonewolferic.github.io/img/pexels/circuit.jpeg">
+<meta property="og:updated_time" content="2018-09-02T13:47:15.059Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于单片机初始化的注意事项">
+<meta name="twitter:description" content="为了让单片机完成我们所需的功能，我们每次都会使用到很多的外设，并且在控制系统中，为了保证控制的时效性，有一个专门的定时器来产生中断，进入控制环——controlloop，在主函数的循环中则放入不痛不痒的程序——led闪烁之类的。一个标准的单片机程序流程为：初始化各个外设，进入while(1)循环，定时器定时产生中断，在中断中，完成控制任务，回到while(1)，再进入下一个中断，解算姿态……以此循">
+<meta name="twitter:image" content="http://lonewolferic.github.io/img/pexels/circuit.jpeg">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9be94d79ceebcce157087ec84a244503";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">生命不息，折腾不止</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Embedded/">Embedded</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Others/">Others</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <i class="icon fa fa-tag"></i>Tag: <em>嵌入式,BUG</em>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-a-bug-about-microcontroller-initalization" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        关于单片机初始化的注意事项
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/06/17/a-bug-about-microcontroller-initalization/" class="article-date">
+            <time datetime="2018-06-16T16:00:00.000Z" itemprop="datePublished">2018-06-17</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/嵌入式/">嵌入式</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>为了让单片机完成我们所需的功能，我们每次都会使用到很多的外设，并且在控制系统中，为了保证控制的时效性，有一个专门的定时器来产生中断，进入控制环——controlloop，在主函数的循环中则放入不痛不痒的程序——led闪烁之类的。一个标准的单片机程序流程为：初始化各个外设，进入while(1)循环，定时器定时产生中断，在中断中，完成控制任务，回到while(1)，再进入下一个中断，解算姿态……以此循环往复。（本程序中TIM14产生定时中断）</p>
+<p>在外设数量较多，并有可能又要添加新外设的情况下，我们通常使用BSP（board support package ，板级支持包 ）来管理外设。主要的好处是不用每次添加新外设的时候在每个外设的程序前面去包含新的外设头文件。</p>
+<p>所以我们的程序一般就变成了这样。</p>
+<p><img src="/2018/06/17/a-bug-about-microcontroller-initalization/捕获3.PNG" alt="捕获3"></p>
+<p>bsp_Init中初始化全部外设。</p>
+<p><img src="/2018/06/17/a-bug-about-microcontroller-initalization/捕获2.PNG" alt="捕获2"></p>
+<p>这看起来是一个没问题的程序，但是实际运行的时候，却跑不起来。</p>
+<h1 id="BUG在哪里呢？"><a href="#BUG在哪里呢？" class="headerlink" title="BUG在哪里呢？"></a>BUG在哪里呢？</h1><p>bug在于初始化的顺序，以上面的程序为例，运行之后发现程序卡住了，进入debug发现程序卡死在这里，这是干什么用的呢？printf的发送程序，等待发送完成的信号。为什么没等到发送完成呢？因为串口都还没初始化啊！</p>
+<p><img src="/2018/06/17/a-bug-about-microcontroller-initalization/捕获.PNG" alt="捕获"></p>
+<p>正常的程序，运行流程图应该是这样的：</p>
+<p><img src="/2018/06/17/a-bug-about-microcontroller-initalization/捕获4.PNG" alt="捕获4"></p>
+<p>这个错误的程序，运行流程图是这样的：（外设2依然会初始化完成，但在如果在还没初始化完成的时候就进入中断，就会出现问题）</p>
+<p><img src="/2018/06/17/a-bug-about-microcontroller-initalization/捕获6.PNG" alt="捕获6"></p>
+<p>问题出现在，控制程序controlloop是肯定要用到外设的——串口，ADC之类的。如果过早进入定时器中断，外设还未初始化完成，就会出现程序轮询一直等相应的情况——等待串口数据发送完成，等待ADC采样完成（程序卡死一般都是因为while(xx == 1)这句等待而导致的）。但是其实根本没法完成，因为这些还没开机初始化呢。</p>
+<p>所以，在单片机程序中，产生定时器定时中断的timer必须放在最后初始化。如下图所示：</p>
+<p><img src="/2018/06/17/a-bug-about-microcontroller-initalization/捕获7.PNG" alt="捕获7"></p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://lonewolferic.github.io/2018/06/17/a-bug-about-microcontroller-initalization/" data-id="cjllju55a0000ewo91mcanvb9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        <!-- 
+    <div id="lv-container" data-id="city" data-uid=MTAyMC8zNTY5MC8xMjIyNg==></div>
+ -->
+
+
+
+    <div id="lv-container" data-id="city" data-uid=MTAyMC8zNTY5MC8xMjIyNg==></div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+            
+                
+            
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/LoneWolfEric" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+            
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/07/01/study-to-death/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            学傻了的对话（不定时更新）
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/05/16/my-first-model-boat-race/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">纪念第一次参加技术类比赛：船模大赛</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#BUG在哪里呢？"><span class="toc-number">1.</span> <span class="toc-text">BUG在哪里呢？</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/07/01/study-to-death/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/pexels/disco-full.jpeg)" alt="学傻了的对话（不定时更新）" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Others/">Others</a></p>
+                            <p class="item-title"><a href="/2018/07/01/study-to-death/" class="title">学傻了的对话（不定时更新）</a></p>
+                            <p class="item-date"><time datetime="2018-06-30T16:00:00.000Z" itemprop="datePublished">2018-07-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/06/17/a-bug-about-microcontroller-initalization/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/pexels/circuit.jpeg)" alt="关于单片机初始化的注意事项" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Embedded/">Embedded</a></p>
+                            <p class="item-title"><a href="/2018/06/17/a-bug-about-microcontroller-initalization/" class="title">关于单片机初始化的注意事项</a></p>
+                            <p class="item-date"><time datetime="2018-06-16T16:00:00.000Z" itemprop="datePublished">2018-06-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/05/16/my-first-model-boat-race/" class="thumbnail">
+    
+    
+        <span style="background-image:url(img/others/1526477179153.jpeg)" alt="纪念第一次参加技术类比赛：船模大赛" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Embedded/">Embedded</a></p>
+                            <p class="item-title"><a href="/2018/05/16/my-first-model-boat-race/" class="title">纪念第一次参加技术类比赛：船模大赛</a></p>
+                            <p class="item-date"><time datetime="2018-05-15T16:00:00.000Z" itemprop="datePublished">2018-05-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/04/30/hello-world/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/pexels/scrabble-blog.jpeg)" alt="Hello World" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Others/">Others</a></p>
+                            <p class="item-title"><a href="/2018/04/30/hello-world/" class="title">Hello World</a></p>
+                            <p class="item-date"><time datetime="2018-04-29T16:00:00.000Z" itemprop="datePublished">2018-04-30</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制/">控制</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/比赛/">比赛</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/嵌入式/" style="font-size: 20px;">嵌入式</a> <a href="/tags/控制/" style="font-size: 10px;">控制</a> <a href="/tags/杂谈/" style="font-size: 20px;">杂谈</a> <a href="/tags/比赛/" style="font-size: 10px;">比赛</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 Eric</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    <!--  -->
+    
+<!-- 来必力City版安装代码 -->
+<!-- <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTY5MC8xMjIyNg==">
+    <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+    
+           if (typeof LivereTower === 'function') { return; }
+    
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+    
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div> -->
+    <!-- City版安装代码已完成 -->
+
+<!--  -->
+
+
+
+    
+    <!-- 来必力City版安装代码 -->
+    <script type="text/javascript">
+     (function(d, s) {
+         var j, e = d.getElementsByTagName(s)[0];
+         if (typeof LivereTower === 'function') { return; }
+         j = d.createElement(s);
+         j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+         j.async = true;
+         e.parentNode.insertBefore(j, e);
+     })(document, 'script');
+    </script>
+  <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+  <!-- City版安装代码已完成 -->
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
