@@ -6,23 +6,26 @@
     
 
     
-    <title>About Me | 孤狼博客</title>
+    <title>Hexo博客markdown文件图片路径自动处理脚本 | 孤狼博客</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="四川大学某菜鸡工科狗 会一点点嵌入式，会一点点电路，会一点点python，会一点点linux 写不出代码，de不出bug，转不动电机 喜欢搞机，喜欢造人工智障 热爱健身，喜爱摄影 想学很多东西，以前觉得读到双博士才能学完想学的，现在发现自己的智商根本不配读大学 直男癌晚期，没救了 有的时候会有很多奇妙的想法，但……就是因为自己太菜了实现不了 唔……反正就是很菜 联系方式：871855626@qq.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About Me">
-<meta property="og:url" content="http://lonewolferic.github.io/about/index.html">
+        <meta name="keywords" content="技术 python" />
+    
+    <meta name="description" content="问题描述Hexo博客通过markdown文件来生成html文件。而我们的博客中经常会插入图片，如何方便的让插入的图片经过渲染之后正确的现实在网页上是我们要解决的问题。 传送门：hexo博客的图片解决方法 这里的方案可以在hexo new post的时候产生一个文件夹，并且在hexo g的时候自动关联图片文件夹和md文件。但是我们在写博客的时候插入图片一般是直接将图片拖入typora中，这样留下的图">
+<meta name="keywords" content="技术 python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo博客markdown文件图片路径自动处理脚本">
+<meta property="og:url" content="http://lonewolferic.github.io/2018/09/05/auto-blog-img-path-process/index.html">
 <meta property="og:site_name" content="孤狼博客">
-<meta property="og:description" content="四川大学某菜鸡工科狗 会一点点嵌入式，会一点点电路，会一点点python，会一点点linux 写不出代码，de不出bug，转不动电机 喜欢搞机，喜欢造人工智障 热爱健身，喜爱摄影 想学很多东西，以前觉得读到双博士才能学完想学的，现在发现自己的智商根本不配读大学 直男癌晚期，没救了 有的时候会有很多奇妙的想法，但……就是因为自己太菜了实现不了 唔……反正就是很菜 联系方式：871855626@qq.">
+<meta property="og:description" content="问题描述Hexo博客通过markdown文件来生成html文件。而我们的博客中经常会插入图片，如何方便的让插入的图片经过渲染之后正确的现实在网页上是我们要解决的问题。 传送门：hexo博客的图片解决方法 这里的方案可以在hexo new post的时候产生一个文件夹，并且在hexo g的时候自动关联图片文件夹和md文件。但是我们在写博客的时候插入图片一般是直接将图片拖入typora中，这样留下的图">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://lonewolferic.github.io/img/pexels/scrabble-blog.jpeg">
-<meta property="og:updated_time" content="2018-09-02T14:47:02.227Z">
+<meta property="og:image" content="http://lonewolferic.github.io/img/pexels/desk-nerd.jpeg">
+<meta property="og:updated_time" content="2018-09-05T04:57:02.226Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About Me">
-<meta name="twitter:description" content="四川大学某菜鸡工科狗 会一点点嵌入式，会一点点电路，会一点点python，会一点点linux 写不出代码，de不出bug，转不动电机 喜欢搞机，喜欢造人工智障 热爱健身，喜爱摄影 想学很多东西，以前觉得读到双博士才能学完想学的，现在发现自己的智商根本不配读大学 直男癌晚期，没救了 有的时候会有很多奇妙的想法，但……就是因为自己太菜了实现不了 唔……反正就是很菜 联系方式：871855626@qq.">
-<meta name="twitter:image" content="http://lonewolferic.github.io/img/pexels/scrabble-blog.jpeg">
+<meta name="twitter:title" content="Hexo博客markdown文件图片路径自动处理脚本">
+<meta name="twitter:description" content="问题描述Hexo博客通过markdown文件来生成html文件。而我们的博客中经常会插入图片，如何方便的让插入的图片经过渲染之后正确的现实在网页上是我们要解决的问题。 传送门：hexo博客的图片解决方法 这里的方案可以在hexo new post的时候产生一个文件夹，并且在hexo g的时候自动关联图片文件夹和md文件。但是我们在写博客的时候插入图片一般是直接将图片拖入typora中，这样留下的图">
+<meta name="twitter:image" content="http://lonewolferic.github.io/img/pexels/desk-nerd.jpeg">
     
 
     
@@ -146,36 +149,56 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <em class="page-title-link" data-url="/about/index.html">About Me</em>
+    <a class="page-title-link" href="/categories/Python/">Python</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="page-" class="article article-single article-type-page" itemscope itemprop="blogPost">
+                            <article id="post-auto-blog-img-path-process" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        About Me
+        Hexo博客markdown文件图片路径自动处理脚本
         </h1>
     
 
             </header>
         
         
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/09/05/auto-blog-img-path-process/" class="article-date">
+            <time datetime="2018-09-05T04:20:36.000Z" itemprop="datePublished">2018-09-05</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/技术-python/">技术 python</a>
+    </div>
+
+            </div>
+        
         
         <div class="article-entry" itemprop="articleBody">
-            <p>四川大学某菜鸡工科狗</p>
-<p>会一点点嵌入式，会一点点电路，会一点点python，会一点点linux</p>
-<p>写不出代码，de不出bug，转不动电机</p>
-<p>喜欢搞机，喜欢造人工智障</p>
-<p>热爱健身，喜爱摄影</p>
-<p>想学很多东西，以前觉得读到双博士才能学完想学的，现在发现自己的智商根本不配读大学</p>
-<p>直男癌晚期，没救了</p>
-<p>有的时候会有很多奇妙的想法，但……就是因为自己太菜了实现不了</p>
-<p>唔……反正就是很菜</p>
-<p>联系方式：<a href="mailto:871855626@qq.com" target="_blank" rel="noopener">871855626@qq.com</a></p>
+            <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>Hexo博客通过markdown文件来生成html文件。而我们的博客中经常会插入图片，如何方便的让插入的图片经过渲染之后正确的现实在网页上是我们要解决的问题。</p>
+<p>传送门：<a href="https://www.jianshu.com/p/c2ba9533088a" target="_blank" rel="noopener">hexo博客的图片解决方法</a></p>
+<p>这里的方案可以在hexo new post的时候产生一个文件夹，并且在hexo g的时候自动关联图片文件夹和md文件。但是我们在写博客的时候插入图片一般是直接将图片拖入typora中，这样留下的图片路径是绝对路径，但是hexo编译需要我们的图片路径是相对路径才可以正确现实图片。那么怎么整呢？每次拖进去之后切换源码模式然后自己删路径？不不不不，像我们这么聪（lan）明（duo）的人，肯定是要用自动的方式来解决这个问题。</p>
+<p>于是就有了这么一个脚本，主要工作思路就是找到带有图片的文章（有同名的文件夹），然后打开文章，用正则表达式寻找图片链接，然后删除前面的路径，只剩下相对路径。</p>
+<p><img src="/2018/09/05/auto-blog-img-path-process/选区_002.png" alt=""></p>
+<p><img src="/2018/09/05/auto-blog-img-path-process/选区_003.png" alt=""></p>
+<h1 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h1><h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>详细方法在上面的链接中。这里就讲一个注意点：</p>
+<p>hexo的_config.yml这里的配置</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h2 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h2><p>来到_Post的目录下，运行python代码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python turn.py</span><br></pre></td></tr></table></figure>
+<p>大功告成</p>
+<p><img src="/2018/09/05/auto-blog-img-path-process/选区_001.png" alt="选区_001"></p>
+<h1 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Article</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">        self.dir = name.strip(<span class="string">'.md'</span>)</span><br><span class="line">        <span class="comment"># print(self.name)</span></span><br><span class="line">        <span class="comment"># print(self.dir)</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">        f = open(self.name, <span class="string">'r'</span>, encoding=<span class="string">'UTF-8'</span>)</span><br><span class="line">        f_new = open(self.name + <span class="string">'.new'</span>, <span class="string">'w'</span>, encoding=<span class="string">'UTF-8'</span>)</span><br><span class="line">        print(<span class="string">'正在修改'</span> + self.name + <span class="string">'的图片路径'</span>)</span><br><span class="line">        lines = f.readlines()</span><br><span class="line">        <span class="keyword">for</span> line <span class="keyword">in</span> lines:</span><br><span class="line">            picture_path = re.findall(<span class="string">r'!\[.&#123;0,100&#125;\]\(.&#123;0,10000&#125;\)'</span>, line)</span><br><span class="line">            <span class="comment"># print(line)</span></span><br><span class="line">            <span class="keyword">if</span> picture_path:</span><br><span class="line">                picture_path = picture_path[<span class="number">0</span>]</span><br><span class="line">                <span class="comment"># print(picture_path)</span></span><br><span class="line">                new_path = picture_path[<span class="number">0</span> : picture_path.index(<span class="string">'('</span>) + <span class="number">1</span>] + picture_path[picture_path.index(self.dir) : ] + <span class="string">'\r\n'</span></span><br><span class="line">                <span class="comment">#print(new_path)</span></span><br><span class="line">                f_new.write(new_path)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                f_new.write(line)</span><br><span class="line">        f.close()</span><br><span class="line">        f_new.close()</span><br><span class="line">        <span class="comment"># 换文件</span></span><br><span class="line">        os.remove(self.name)</span><br><span class="line">        os.rename(self.name + <span class="string">'.new'</span>, self.name)</span><br><span class="line">        print(<span class="string">'修改完毕'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    article_list = []</span><br><span class="line">    dir_list = []</span><br><span class="line">    article_with_picture_list = []</span><br><span class="line">    files = os.listdir(<span class="string">'.'</span>)</span><br><span class="line">    <span class="comment"># print(files)</span></span><br><span class="line">    <span class="keyword">for</span> f <span class="keyword">in</span> files:</span><br><span class="line">        <span class="keyword">if</span> <span class="string">'.md'</span> <span class="keyword">in</span> f:</span><br><span class="line">            article_list.append(f)</span><br><span class="line">        <span class="keyword">elif</span> <span class="string">'.'</span> <span class="keyword">not</span> <span class="keyword">in</span> f:</span><br><span class="line">            dir_list.append(f)</span><br><span class="line">    <span class="comment"># print(article_list)</span></span><br><span class="line">    <span class="comment"># print(dir_list)         </span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> dir <span class="keyword">in</span> dir_list:</span><br><span class="line">        <span class="keyword">for</span> article <span class="keyword">in</span> article_list:</span><br><span class="line">            <span class="keyword">if</span> dir <span class="keyword">in</span> article:</span><br><span class="line">                article_with_picture_list.append(article)</span><br><span class="line">    print(<span class="string">'查询到本目录下有以下文章的图片路径需要修改：'</span>)</span><br><span class="line">    <span class="keyword">for</span> article_with_picture <span class="keyword">in</span> article_with_picture_list:</span><br><span class="line">        print(article_with_picture)</span><br><span class="line">    <span class="comment"># 执行转换</span></span><br><span class="line">    <span class="keyword">for</span> article_with_picture <span class="keyword">in</span> article_with_picture_list:</span><br><span class="line">        article = Article(article_with_picture)</span><br><span class="line">        article.run()</span><br><span class="line"></span><br><span class="line">    print(<span class="string">'谢谢使用'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -183,7 +206,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://lonewolferic.github.io/about/index.html" data-id="cjloo6shn0001m9o93wysndv6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lonewolferic.github.io/2018/09/05/auto-blog-img-path-process/" data-id="cjloo6sho0002m9o9d6pdrhtb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -290,10 +313,32 @@ var _hmt = _hmt || [];
         </ul>
     </div>
     
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/07/01/study-to-death/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">学傻了的对话（不定时更新）</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
     <div class="widgets-container">
         
             
                 
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#问题描述"><span class="toc-number">1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#使用方法"><span class="toc-number">2.</span> <span class="toc-text">使用方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">2.1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#执行"><span class="toc-number">2.2.</span> <span class="toc-text">执行</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#源码"><span class="toc-number">3.</span> <span class="toc-text">源码</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
 
             
                 
