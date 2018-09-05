@@ -12,19 +12,19 @@
     
         <meta name="keywords" content="技术,python" />
     
-    <meta name="description" content="问题描述Hexo博客通过markdown文件来生成html文件。而我们的博客中经常会插入图片，如何方便的让插入的图片经过渲染之后正确的现实在网页上是我们要解决的问题。 传送门：hexo博客的图片解决方法 这里的方案可以在hexo new post的时候产生一个文件夹，并且在hexo g的时候自动关联图片文件夹和md文件。但是我们在写博客的时候插入图片一般是直接将图片拖入typora中，这样留下的图">
+    <meta name="description" content="问题描述Hexo博客通过markdown文件来生成html文件。而我们的博客中经常会插入图片，如何方便的让插入的图片经过渲染之后正确地显示在网页上是我们要解决的问题。 传送门：hexo博客的图片解决方法 这里的方案可以在hexo new post的时候产生一个文件夹，并且在hexo g的时候自动关联图片文件夹和md文件。但是我们在写博客的时候插入图片一般是直接将图片拖入typora中，这样留下的图">
 <meta name="keywords" content="技术,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo博客markdown文件图片路径自动处理脚本">
 <meta property="og:url" content="http://lonewolferic.github.io/2018/09/05/auto-blog-img-path-process/index.html">
 <meta property="og:site_name" content="孤狼博客">
-<meta property="og:description" content="问题描述Hexo博客通过markdown文件来生成html文件。而我们的博客中经常会插入图片，如何方便的让插入的图片经过渲染之后正确的现实在网页上是我们要解决的问题。 传送门：hexo博客的图片解决方法 这里的方案可以在hexo new post的时候产生一个文件夹，并且在hexo g的时候自动关联图片文件夹和md文件。但是我们在写博客的时候插入图片一般是直接将图片拖入typora中，这样留下的图">
+<meta property="og:description" content="问题描述Hexo博客通过markdown文件来生成html文件。而我们的博客中经常会插入图片，如何方便的让插入的图片经过渲染之后正确地显示在网页上是我们要解决的问题。 传送门：hexo博客的图片解决方法 这里的方案可以在hexo new post的时候产生一个文件夹，并且在hexo g的时候自动关联图片文件夹和md文件。但是我们在写博客的时候插入图片一般是直接将图片拖入typora中，这样留下的图">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://lonewolferic.github.io/img/pexels/desk-nerd.jpeg">
-<meta property="og:updated_time" content="2018-09-05T05:05:40.236Z">
+<meta property="og:updated_time" content="2018-09-05T05:32:15.432Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo博客markdown文件图片路径自动处理脚本">
-<meta name="twitter:description" content="问题描述Hexo博客通过markdown文件来生成html文件。而我们的博客中经常会插入图片，如何方便的让插入的图片经过渲染之后正确的现实在网页上是我们要解决的问题。 传送门：hexo博客的图片解决方法 这里的方案可以在hexo new post的时候产生一个文件夹，并且在hexo g的时候自动关联图片文件夹和md文件。但是我们在写博客的时候插入图片一般是直接将图片拖入typora中，这样留下的图">
+<meta name="twitter:description" content="问题描述Hexo博客通过markdown文件来生成html文件。而我们的博客中经常会插入图片，如何方便的让插入的图片经过渲染之后正确地显示在网页上是我们要解决的问题。 传送门：hexo博客的图片解决方法 这里的方案可以在hexo new post的时候产生一个文件夹，并且在hexo g的时候自动关联图片文件夹和md文件。但是我们在写博客的时候插入图片一般是直接将图片拖入typora中，这样留下的图">
 <meta name="twitter:image" content="http://lonewolferic.github.io/img/pexels/desk-nerd.jpeg">
     
 
@@ -185,7 +185,7 @@ var _hmt = _hmt || [];
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>Hexo博客通过markdown文件来生成html文件。而我们的博客中经常会插入图片，如何方便的让插入的图片经过渲染之后正确的现实在网页上是我们要解决的问题。</p>
+            <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>Hexo博客通过markdown文件来生成html文件。而我们的博客中经常会插入图片，如何方便的让插入的图片经过渲染之后正确地显示在网页上是我们要解决的问题。</p>
 <p>传送门：<a href="https://www.jianshu.com/p/c2ba9533088a" target="_blank" rel="noopener">hexo博客的图片解决方法</a></p>
 <p>这里的方案可以在hexo new post的时候产生一个文件夹，并且在hexo g的时候自动关联图片文件夹和md文件。但是我们在写博客的时候插入图片一般是直接将图片拖入typora中，这样留下的图片路径是绝对路径，但是hexo编译需要我们的图片路径是相对路径才可以正确现实图片。那么怎么整呢？每次拖进去之后切换源码模式然后自己删路径？不不不不，像我们这么聪（lan）明（duo）的人，肯定是要用自动的方式来解决这个问题。</p>
 <p>于是就有了这么一个脚本，主要工作思路就是找到带有图片的文章（有同名的文件夹），然后打开文章，用正则表达式寻找图片链接，然后删除前面的路径，只剩下相对路径。</p>
@@ -206,7 +206,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://lonewolferic.github.io/2018/09/05/auto-blog-img-path-process/" data-id="cjlooc7sg00023vo9hfcsou1q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lonewolferic.github.io/2018/09/05/auto-blog-img-path-process/" data-id="cjlophpge0002mto9h2xbcxhd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
