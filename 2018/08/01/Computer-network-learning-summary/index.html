@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>《计算机网络与通信》学习总结 | 孤狼博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="学习,网络,总结" />
+    
+    <meta name="description" content="自动化专业的计网给我的感觉是一种科普性质的课程，对于层次概念的要求比较高，对于实践不及计算机专业。（计算机专业要求他们根据所学知识设计底层的通信程序） 绪论网络的核心是由路由器构成的网，网络的边缘才是我们这些上网的终端。 网络通信里面有个很好玩的两军问题，这个思想实验说明了在不可靠通信链路上面试图通过通信达到一致是非常困难的。 数据包传输方式 电路交换：连接实际的电路，传输信息    分组交换：将">
+<meta name="keywords" content="学习,网络,总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《计算机网络与通信》学习总结">
+<meta property="og:url" content="http://lonewolferic.github.io/2018/08/01/Computer-network-learning-summary/index.html">
+<meta property="og:site_name" content="孤狼博客">
+<meta property="og:description" content="自动化专业的计网给我的感觉是一种科普性质的课程，对于层次概念的要求比较高，对于实践不及计算机专业。（计算机专业要求他们根据所学知识设计底层的通信程序） 绪论网络的核心是由路由器构成的网，网络的边缘才是我们这些上网的终端。 网络通信里面有个很好玩的两军问题，这个思想实验说明了在不可靠通信链路上面试图通过通信达到一致是非常困难的。 数据包传输方式 电路交换：连接实际的电路，传输信息    分组交换：将">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://lonewolferic.github.io/img/pexels/adult-business-computers-256219.jpg">
+<meta property="og:updated_time" content="2018-09-07T07:51:29.764Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《计算机网络与通信》学习总结">
+<meta name="twitter:description" content="自动化专业的计网给我的感觉是一种科普性质的课程，对于层次概念的要求比较高，对于实践不及计算机专业。（计算机专业要求他们根据所学知识设计底层的通信程序） 绪论网络的核心是由路由器构成的网，网络的边缘才是我们这些上网的终端。 网络通信里面有个很好玩的两军问题，这个思想实验说明了在不可靠通信链路上面试图通过通信达到一致是非常困难的。 数据包传输方式 电路交换：连接实际的电路，传输信息    分组交换：将">
+<meta name="twitter:image" content="http://lonewolferic.github.io/img/pexels/adult-business-computers-256219.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9be94d79ceebcce157087ec84a244503";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">生命不息，折腾不止</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Control/">Control</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Course/">Course</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Embedded/">Embedded</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Others/">Others</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Course/">Course</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-Computer-network-learning-summary" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        《计算机网络与通信》学习总结
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/08/01/Computer-network-learning-summary/" class="article-date">
+            <time datetime="2018-07-31T16:00:00.000Z" itemprop="datePublished">2018-08-01</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/学习/">学习</a>, <a class="tag-link" href="/tags/总结/">总结</a>, <a class="tag-link" href="/tags/网络/">网络</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>自动化专业的计网给我的感觉是一种科普性质的课程，对于层次概念的要求比较高，对于实践不及计算机专业。（计算机专业要求他们根据所学知识设计底层的通信程序）</p>
+<h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><p>网络的核心是由路由器构成的网，网络的边缘才是我们这些上网的终端。</p>
+<p>网络通信里面有个很好玩的两军问题，这个思想实验说明了在不可靠通信链路上面试图通过通信达到一致是非常困难的。</p>
+<h2 id="数据包传输方式"><a href="#数据包传输方式" class="headerlink" title="数据包传输方式"></a>数据包传输方式</h2><ul>
+<li>电路交换：连接实际的电路，传输信息</li>
+</ul>
+<p><img src="/2018/08/01/Computer-network-learning-summary/捕获.PNG" alt="捕获"></p>
+<ul>
+<li>分组交换：将大的数据包拆分成较小的部分，加上报文头部组成报文。</li>
+</ul>
+<p><img src="/2018/08/01/Computer-network-learning-summary/捕获1.PNG" alt="捕获1"></p>
+<p><img src="/2018/08/01/Computer-network-learning-summary/捕获2.PNG" alt="捕获2"></p>
+<h2 id="延迟"><a href="#延迟" class="headerlink" title="延迟"></a>延迟</h2><p>网络的四种延迟：</p>
+<ul>
+<li>nodal processing delay</li>
+<li>queueing delay（玩游戏的时候卡主要就是他）</li>
+<li>transmission delay</li>
+<li>propagation delay</li>
+</ul>
+<p><img src="/2018/08/01/Computer-network-learning-summary/延迟.PNG" alt="延迟"></p>
+<h2 id="五层网络模型"><a href="#五层网络模型" class="headerlink" title="五层网络模型"></a>五层网络模型</h2><p><img src="/2018/08/01/Computer-network-learning-summary/五层网络模型.PNG" alt="五层网络模型"></p>
+<h1 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h1><h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><p>喜闻乐见的网页服务</p>
+<ul>
+<li>stateless：服务器不保留任何访问过的请求信息，cookie才保留访问请求信息。chrome F12 network就可以看到server向我们要了那些cookie数据。</li>
+</ul>
+<h2 id="FTP"><a href="#FTP" class="headerlink" title="FTP"></a>FTP</h2><p>传输文件</p>
+<h2 id="E-mail"><a href="#E-mail" class="headerlink" title="E-mail"></a>E-mail</h2><ul>
+<li><p>SMTP</p>
+<p>主要用于发邮件，因为这个协议需要两方同时在场，如果那他来收邮件就会出现不登陆没法收邮件的情况。</p>
+</li>
+<li><p>POP3</p>
+<p>用于收邮件，可以下载邮件，但是是单向的，客户端操作无法对服务器端产生影响。</p>
+</li>
+<li><p>IMAP</p>
+<p>相比POP3增加了双向通道，客户端操作可以同步到服务器端。</p>
+<h2 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h2></li>
+</ul>
+<p>域名解析，将网址转化为IP地址。</p>
+<p><img src="/2018/08/01/Computer-network-learning-summary/DNS.PNG" alt="DNS"></p>
+<h1 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h1><h2 id="TCP-amp-UDP"><a href="#TCP-amp-UDP" class="headerlink" title="TCP &amp; UDP"></a>TCP &amp; UDP</h2><p>大名鼎鼎的TCP/IP</p>
+<p>TCP面向连接，可靠的数据传输，但是因此传输速度远不及UDP。</p>
+<p>UDP是尽力而为的传输方式，有数据包丢失，但是速度快，用于容忍数据包丢失的场合。</p>
+<h2 id="RDT"><a href="#RDT" class="headerlink" title="RDT"></a>RDT</h2><p>解释了TCP是如何一步步来的。从完全可靠的数据传输链路出发，一步步认为每一个地方都具有可能是不可靠的。最后形成了最终的模型。</p>
+<p><img src="/2018/08/01/Computer-network-learning-summary/图片1.png" alt="图片1"></p>
+<h1 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h1><h2 id="IP"><a href="#IP" class="headerlink" title="IP"></a>IP</h2><p>主要就是子网划分：一般的ip都是定死的8的整数倍是网络号，剩下的都是主机号，这样想要组一个子网就会造成ip地址的大量浪费，于时出现子网分割来让我们的网络更加合理地应用。</p>
+<h2 id="Routing-algorithms"><a href="#Routing-algorithms" class="headerlink" title="Routing algorithms"></a>Routing algorithms</h2><ul>
+<li>Link State</li>
+</ul>
+<p>全局感知，算法有点动态规划的感觉。（好像就是动态规划）</p>
+<p><img src="/2018/08/01/Computer-network-learning-summary/LS.PNG" alt="LS"></p>
+<ul>
+<li>Distance Vector<br>局部感知，只知道和自己相连的路由器的情况，每次算路径通过与自己相连的路由器交换路由表来获取最短路径。</li>
+</ul>
+<p><img src="/2018/08/01/Computer-network-learning-summary/DV.PNG" alt="DV"></p>
+<h1 id="链路层-amp-物理层"><a href="#链路层-amp-物理层" class="headerlink" title="链路层 &amp; 物理层"></a>链路层 &amp; 物理层</h1><p>网路层用IP地址来表示一个终端的身份，而链路层用的是MAC地址。</p>
+<ul>
+<li><p>CSMA/CD (Collision Detection，冲突检测)</p>
+</li>
+<li><p>交换机 &amp; 集线器：交换机能分割广播域，而集线器只是单纯地将总线相连。</p>
+</li>
+</ul>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>学了计网之后了解了IP到底是啥？为啥要装路由器？还有就是知道了WLAN和WIFI的区别，一个是虚拟局域网，一个是实现它的协议。</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://lonewolferic.github.io/2018/08/01/Computer-network-learning-summary/" data-id="cjlrpd3cs000263o9ot9tjfn2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        <!-- 
+    <div id="lv-container" data-id="city" data-uid=MTAyMC8zNTY5MC8xMjIyNg==></div>
+ -->
+
+
+
+    <div id="lv-container" data-id="city" data-uid=MTAyMC8zNTY5MC8xMjIyNg==></div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+            
+                
+            
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/LoneWolfEric" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+            
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/08/12/When-academic-misconduct-becomes-a-trend/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            当学术不端成为一种风尚......
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/07/01/study-to-death/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">学傻了的对话（不定时更新）</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#绪论"><span class="toc-number">1.</span> <span class="toc-text">绪论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据包传输方式"><span class="toc-number">1.1.</span> <span class="toc-text">数据包传输方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#延迟"><span class="toc-number">1.2.</span> <span class="toc-text">延迟</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五层网络模型"><span class="toc-number">1.3.</span> <span class="toc-text">五层网络模型</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#应用层"><span class="toc-number">2.</span> <span class="toc-text">应用层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP"><span class="toc-number">2.1.</span> <span class="toc-text">HTTP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#FTP"><span class="toc-number">2.2.</span> <span class="toc-text">FTP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#E-mail"><span class="toc-number">2.3.</span> <span class="toc-text">E-mail</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS"><span class="toc-number">2.4.</span> <span class="toc-text">DNS</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#传输层"><span class="toc-number">3.</span> <span class="toc-text">传输层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-amp-UDP"><span class="toc-number">3.1.</span> <span class="toc-text">TCP &amp; UDP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RDT"><span class="toc-number">3.2.</span> <span class="toc-text">RDT</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#网络层"><span class="toc-number">4.</span> <span class="toc-text">网络层</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#IP"><span class="toc-number">4.1.</span> <span class="toc-text">IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Routing-algorithms"><span class="toc-number">4.2.</span> <span class="toc-text">Routing algorithms</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#链路层-amp-物理层"><span class="toc-number">5.</span> <span class="toc-text">链路层 &amp; 物理层</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#其他"><span class="toc-number">6.</span> <span class="toc-text">其他</span></a></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/09/05/auto-blog-img-path-process/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/pexels/desk-nerd.jpeg)" alt="Hexo博客markdown文件图片路径自动处理脚本" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2018/09/05/auto-blog-img-path-process/" class="title">Hexo博客markdown文件图片路径自动处理脚本</a></p>
+                            <p class="item-date"><time datetime="2018-09-05T04:20:36.000Z" itemprop="datePublished">2018-09-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/09/04/Suggested-elective-courses/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/pexels/retro-school.jpeg)" alt="建议认真学的选修课" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Course/">Course</a></p>
+                            <p class="item-title"><a href="/2018/09/04/Suggested-elective-courses/" class="title">建议认真学的选修课</a></p>
+                            <p class="item-date"><time datetime="2018-09-03T16:00:00.000Z" itemprop="datePublished">2018-09-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/08/27/Analysis-of-gimbal-servo-control-system/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/others/v2-ad9ef1011cb83fff5ef856242ccfc128_r.jpg)" alt="浅析RM步兵机器人云台-底盘随动系统" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Control/">Control</a></p>
+                            <p class="item-title"><a href="/2018/08/27/Analysis-of-gimbal-servo-control-system/" class="title">浅析RM步兵机器人云台-底盘随动系统</a></p>
+                            <p class="item-date"><time datetime="2018-08-26T16:00:00.000Z" itemprop="datePublished">2018-08-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/08/12/When-academic-misconduct-becomes-a-trend/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/pexels/dark-galaxy-wallpaper-night-32237.jpg)" alt="当学术不端成为一种风尚......" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
+                            <p class="item-title"><a href="/2018/08/12/When-academic-misconduct-becomes-a-trend/" class="title">当学术不端成为一种风尚......</a></p>
+                            <p class="item-date"><time datetime="2018-08-11T16:00:00.000Z" itemprop="datePublished">2018-08-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/08/01/Computer-network-learning-summary/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/pexels/adult-business-computers-256219.jpg)" alt="《计算机网络与通信》学习总结" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Course/">Course</a></p>
+                            <p class="item-title"><a href="/2018/08/01/Computer-network-learning-summary/" class="title">《计算机网络与通信》学习总结</a></p>
+                            <p class="item-date"><time datetime="2018-07-31T16:00:00.000Z" itemprop="datePublished">2018-08-01</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Control/">Control</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Course/">Course</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/RoboMaster/">RoboMaster</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制/">控制</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/比赛/">比赛</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/评论/">评论</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/RoboMaster/" style="font-size: 10px;">RoboMaster</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/学习/" style="font-size: 15px;">学习</a> <a href="/tags/嵌入式/" style="font-size: 15px;">嵌入式</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/控制/" style="font-size: 15px;">控制</a> <a href="/tags/杂谈/" style="font-size: 20px;">杂谈</a> <a href="/tags/比赛/" style="font-size: 10px;">比赛</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/评论/" style="font-size: 10px;">评论</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 Eric</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    <!--  -->
+    
+<!-- 来必力City版安装代码 -->
+<!-- <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTY5MC8xMjIyNg==">
+    <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+    
+           if (typeof LivereTower === 'function') { return; }
+    
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+    
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div> -->
+    <!-- City版安装代码已完成 -->
+<!-- 
+ -->
+
+
+
+    
+    <!-- 来必力City版安装代码 -->
+    <script type="text/javascript">
+     (function(d, s) {
+         var j, e = d.getElementsByTagName(s)[0];
+         if (typeof LivereTower === 'function') { return; }
+         j = d.createElement(s);
+         j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+         j.async = true;
+         e.parentNode.insertBefore(j, e);
+     })(document, 'script');
+    </script>
+  <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+  <!-- City版安装代码已完成 -->
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
