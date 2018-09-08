@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>2018暑期RM培训总结” | 孤狼博客</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="RoboMaster,总结" />
+    
+    <meta name="description" content="学会的： 底盘 底盘代码熟练掌握。 了解了如何使用CAN总线的方式驱动电调控制电机转动。 dbus通信数据报。 修复了底盘电调不上电的bug，至今未出现过无法上电的情况。（不代表已经彻底修复） 实践了热插拔的危害。  PID 了解了位置式PID和增量式PID，知道两者在应用方面的区别，但是对于底层原理上的区别还不是理解的很透彻。 了解了PID里面的积分限幅部分，学会使用变比例PID控制器进行积分限">
+<meta name="keywords" content="RoboMaster,总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2018暑期RM培训总结”">
+<meta property="og:url" content="http://lonewolferic.github.io/2018/08/31/2018-summer-vacation-RM-training-summary/index.html">
+<meta property="og:site_name" content="孤狼博客">
+<meta property="og:description" content="学会的： 底盘 底盘代码熟练掌握。 了解了如何使用CAN总线的方式驱动电调控制电机转动。 dbus通信数据报。 修复了底盘电调不上电的bug，至今未出现过无法上电的情况。（不代表已经彻底修复） 实践了热插拔的危害。  PID 了解了位置式PID和增量式PID，知道两者在应用方面的区别，但是对于底层原理上的区别还不是理解的很透彻。 了解了PID里面的积分限幅部分，学会使用变比例PID控制器进行积分限">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://lonewolferic.github.io/img/RoboMaster/image-img13-large.cbc4a6c.jpg">
+<meta property="og:updated_time" content="2018-09-08T04:15:46.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2018暑期RM培训总结”">
+<meta name="twitter:description" content="学会的： 底盘 底盘代码熟练掌握。 了解了如何使用CAN总线的方式驱动电调控制电机转动。 dbus通信数据报。 修复了底盘电调不上电的bug，至今未出现过无法上电的情况。（不代表已经彻底修复） 实践了热插拔的危害。  PID 了解了位置式PID和增量式PID，知道两者在应用方面的区别，但是对于底层原理上的区别还不是理解的很透彻。 了解了PID里面的积分限幅部分，学会使用变比例PID控制器进行积分限">
+<meta name="twitter:image" content="http://lonewolferic.github.io/img/RoboMaster/image-img13-large.cbc4a6c.jpg">
+    
+
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.ico" />
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+        <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?9be94d79ceebcce157087ec84a244503";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+    
+
+
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">生命不息，折腾不止</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Control/">Control</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Course/">Course</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Embedded/">Embedded</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Life/">Life</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Others/">Others</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Control/">Control</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-2018-summer-vacation-RM-training-summary" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        2018暑期RM培训总结”
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2018/08/31/2018-summer-vacation-RM-training-summary/" class="article-date">
+            <time datetime="2018-08-30T16:00:00.000Z" itemprop="datePublished">2018-08-31</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/RoboMaster/">RoboMaster</a>, <a class="tag-link" href="/tags/总结/">总结</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="学会的："><a href="#学会的：" class="headerlink" title="学会的："></a>学会的：</h1><hr>
+<h2 id="底盘"><a href="#底盘" class="headerlink" title="底盘"></a>底盘</h2><ol>
+<li>底盘代码熟练掌握。</li>
+<li>了解了如何使用CAN总线的方式驱动电调控制电机转动。</li>
+<li>dbus通信数据报。</li>
+<li>修复了底盘电调不上电的bug，至今未出现过无法上电的情况。（不代表已经彻底修复）</li>
+<li><del>实践了</del>热插拔的危害。</li>
+</ol>
+<h2 id="PID"><a href="#PID" class="headerlink" title="PID"></a>PID</h2><ol>
+<li>了解了位置式PID和增量式PID，知道两者在应用方面的区别，但是对于底层原理上的区别还不是理解的很透彻。</li>
+<li>了解了PID里面的积分限幅部分，学会使用变比例PID控制器进行积分限幅。</li>
+<li>学会了用visualscope进行PID调参。</li>
+<li>调了二代步兵的底盘PID。</li>
+</ol>
+<h2 id="云台："><a href="#云台：" class="headerlink" title="云台："></a>云台：</h2><ol>
+<li>熟悉了云台代码结构，对于CanBusTask，RemoteTask，ControlTask三条进程熟悉了解了。</li>
+<li>了解了云台的整个通信传输路线，帮陈独秀同志编写了正反转的拨弹电机代码。</li>
+<li>了解了云台底盘随动系统的控制回路和控制方法。</li>
+<li>了解了串级PID。</li>
+<li>变成方面了解了结构体里使用函数指针，造出类的效果的方法，非常优美。</li>
+</ol>
+<h1 id="未完成的："><a href="#未完成的：" class="headerlink" title="未完成的："></a>未完成的：</h1><hr>
+<h2 id="底盘-1"><a href="#底盘-1" class="headerlink" title="底盘"></a>底盘</h2><ol>
+<li>SetSpeed和Kp很大时电机反转问题未找出原因。</li>
+</ol>
+<h2 id="云台"><a href="#云台" class="headerlink" title="云台"></a>云台</h2><ol>
+<li>未调过PID参数。</li>
+<li>对于随动的代码只是大致了解，对于里面的细节未能熟练掌握。</li>
+<li>还是没能搞明白（没有实践操作）为什么拨弹电机单发模式不能使用PID。</li>
+</ol>
+<h2 id="三、未来规划："><a href="#三、未来规划：" class="headerlink" title="三、未来规划："></a>三、未来规划：</h2><ol>
+<li>10月1日前调试完毕云台代码，对于云台的PID进行一次调参，特别是串级PID的代码。</li>
+<li>未来调试模块的时候想调一下6500/9250, 随动控制系统, 开机自检模块上线。</li>
+<li>想让战车实现更多的自动化方法。</li>
+<li>在考虑是否能使用ROS使战车更加的智能化（智能路径规划，简单的视觉等等）。</li>
+<li><del>好好打游戏</del>, 争做好操作手。</li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://lonewolferic.github.io/2018/08/31/2018-summer-vacation-RM-training-summary/" data-id="cjlsxmjgt0000jao9i8326rfj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        <!-- 
+    <div id="lv-container" data-id="city" data-uid=MTAyMC8zNTY5MC8xMjIyNg==></div>
+ -->
+
+
+
+    <div id="lv-container" data-id="city" data-uid=MTAyMC8zNTY5MC8xMjIyNg==></div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+            
+                
+            
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/LoneWolfEric" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+            
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/09/04/Suggested-elective-courses/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">newer</strong>
+        <p class="article-nav-title">
+        
+            建议认真学的选修课
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2018/08/27/Analysis-of-gimbal-servo-control-system/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">浅析RM步兵机器人云台-底盘随动系统</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+<div class="widget-wrap widget-list">
+    <h3 class="widget-title">Catalog</h3>
+    <div class="widget">
+        <div id="toc" class="toc-article">
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#学会的："><span class="toc-number">1.</span> <span class="toc-text">学会的：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#底盘"><span class="toc-number">1.1.</span> <span class="toc-text">底盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PID"><span class="toc-number">1.2.</span> <span class="toc-text">PID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#云台："><span class="toc-number">1.3.</span> <span class="toc-text">云台：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#未完成的："><span class="toc-number">2.</span> <span class="toc-text">未完成的：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#底盘-1"><span class="toc-number">2.1.</span> <span class="toc-text">底盘</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#云台"><span class="toc-number">2.2.</span> <span class="toc-text">云台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、未来规划："><span class="toc-number">2.3.</span> <span class="toc-text">三、未来规划：</span></a></li></ol></li></ol>
+        </div>
+    </div>
+</div>
+
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/09/05/auto-blog-img-path-process/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/pexels/desk-nerd.jpeg)" alt="Hexo博客markdown文件图片路径自动处理脚本" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/2018/09/05/auto-blog-img-path-process/" class="title">Hexo博客markdown文件图片路径自动处理脚本</a></p>
+                            <p class="item-date"><time datetime="2018-09-05T04:20:36.000Z" itemprop="datePublished">2018-09-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/09/04/Suggested-elective-courses/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/pexels/retro-school.jpeg)" alt="建议认真学的选修课" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Course/">Course</a></p>
+                            <p class="item-title"><a href="/2018/09/04/Suggested-elective-courses/" class="title">建议认真学的选修课</a></p>
+                            <p class="item-date"><time datetime="2018-09-03T16:00:00.000Z" itemprop="datePublished">2018-09-04</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/08/31/2018-summer-vacation-RM-training-summary/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/RoboMaster/image-img13-large.cbc4a6c.jpg)" alt="2018暑期RM培训总结”" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Control/">Control</a></p>
+                            <p class="item-title"><a href="/2018/08/31/2018-summer-vacation-RM-training-summary/" class="title">2018暑期RM培训总结”</a></p>
+                            <p class="item-date"><time datetime="2018-08-30T16:00:00.000Z" itemprop="datePublished">2018-08-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/08/27/Analysis-of-gimbal-servo-control-system/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/RoboMaster/v2-ad9ef1011cb83fff5ef856242ccfc128_r.jpg)" alt="浅析RM步兵机器人云台-底盘随动系统" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Control/">Control</a></p>
+                            <p class="item-title"><a href="/2018/08/27/Analysis-of-gimbal-servo-control-system/" class="title">浅析RM步兵机器人云台-底盘随动系统</a></p>
+                            <p class="item-date"><time datetime="2018-08-26T16:00:00.000Z" itemprop="datePublished">2018-08-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/08/26/Implement-class-with-C/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/pexels/wall_e.jpeg)" alt="用c语言实现类" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Embedded/">Embedded</a></p>
+                            <p class="item-title"><a href="/2018/08/26/Implement-class-with-C/" class="title">用c语言实现类</a></p>
+                            <p class="item-date"><time datetime="2018-08-25T16:00:00.000Z" itemprop="datePublished">2018-08-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Control/">Control</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Course/">Course</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RoboMaster/">RoboMaster</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制/">控制</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/比赛/">比赛</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/评论/">评论</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/RoboMaster/" style="font-size: 15px;">RoboMaster</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/学习/" style="font-size: 15px;">学习</a> <a href="/tags/嵌入式/" style="font-size: 20px;">嵌入式</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/控制/" style="font-size: 15px;">控制</a> <a href="/tags/杂谈/" style="font-size: 20px;">杂谈</a> <a href="/tags/比赛/" style="font-size: 10px;">比赛</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/评论/" style="font-size: 10px;">评论</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 Eric</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    <!--  -->
+    
+<!-- 来必力City版安装代码 -->
+<!-- <div id="lv-container" data-id="city" data-uid="MTAyMC8zNTY5MC8xMjIyNg==">
+    <script type="text/javascript">
+       (function(d, s) {
+           var j, e = d.getElementsByTagName(s)[0];
+    
+           if (typeof LivereTower === 'function') { return; }
+    
+           j = d.createElement(s);
+           j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+           j.async = true;
+    
+           e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div> -->
+    <!-- City版安装代码已完成 -->
+<!-- 
+ -->
+
+
+
+    
+    <!-- 来必力City版安装代码 -->
+    <script type="text/javascript">
+     (function(d, s) {
+         var j, e = d.getElementsByTagName(s)[0];
+         if (typeof LivereTower === 'function') { return; }
+         j = d.createElement(s);
+         j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+         j.async = true;
+         e.parentNode.insertBefore(j, e);
+     })(document, 'script');
+    </script>
+  <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+  <!-- City版安装代码已完成 -->
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

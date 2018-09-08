@@ -21,7 +21,7 @@
 <meta property="og:description" content="c语言和c++完全就是两种不同的语言。但是c++兼容c，c++最大的特点就是引入了类（Class）。那么如何在c语言中实现类似于c++中类的操作呢？ 实现代码定义结构体 12345678910111213141516171819202122typedef struct PID_Regulator_t&amp;#123;	float ref;	float fdb;	float err[2];	float k">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://lonewolferic.github.io/img/pexels/wall_e.jpeg">
-<meta property="og:updated_time" content="2018-09-07T10:21:17.631Z">
+<meta property="og:updated_time" content="2018-09-08T04:21:01.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用c语言实现类">
 <meta name="twitter:description" content="c语言和c++完全就是两种不同的语言。但是c++兼容c，c++最大的特点就是引入了类（Class）。那么如何在c语言中实现类似于c++中类的操作呢？ 实现代码定义结构体 12345678910111213141516171819202122typedef struct PID_Regulator_t&amp;#123;	float ref;	float fdb;	float err[2];	float k">
@@ -193,9 +193,10 @@ var _hmt = _hmt || [];
 <p>定义结构体时，将<code>Calc</code>这个函数指针指向<code>void PID_Calc(PID_Regulator_t *pid)</code>这个函数。</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> GIMBAL_MOTOR_PITCH_POSITION_PID_DEFAULT \</span></span><br><span class="line">&#123;\</span><br><span class="line">	<span class="number">0</span>,\</span><br><span class="line">	<span class="number">0</span>,\</span><br><span class="line">	&#123;<span class="number">0</span>,<span class="number">0</span>&#125;,\</span><br><span class="line">	PITCH_POSITION_KP_DEFAULTS,\</span><br><span class="line">	PITCH_POSITION_KI_DEFAULTS,\</span><br><span class="line">	PITCH_POSITION_KD_DEFAULTS,\</span><br><span class="line">	<span class="number">1</span>,\</span><br><span class="line">	<span class="number">0</span>,\</span><br><span class="line">	<span class="number">0</span>,\</span><br><span class="line">	<span class="number">4900</span>,\</span><br><span class="line">	<span class="number">1000</span>,\</span><br><span class="line">	<span class="number">1500</span>,\</span><br><span class="line">	<span class="number">0</span>,\</span><br><span class="line">	<span class="number">4900</span>,\</span><br><span class="line">	<span class="number">30</span>,\</span><br><span class="line">	<span class="number">0</span>,\</span><br><span class="line">	<span class="number">0</span>,\</span><br><span class="line">	&amp;PID_Calc,\</span><br><span class="line">	&amp;PID_Reset,\</span><br><span class="line">&#125;\</span><br></pre></td></tr></table></figure>
 <p>某个函数中调用了这种方式来进行计算PID。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">void RammerSpeedPID( int16_t TargetSpeed )</span><br><span class="line">&#123;</span><br><span class="line">	RAMMERSpeedPID.kp  = RAMMER_SPEED_KP_DEFAULTS;</span><br><span class="line">	RAMMERSpeedPID.ki  = RAMMER_SPEED_KI_DEFAULTS;</span><br><span class="line">	RAMMERSpeedPID.kd  = RAMMER_SPEED_KD_DEFAULTS;</span><br><span class="line">	RAMMERSpeedPID.ref = TargetSpeed;</span><br><span class="line">	RAMMERSpeedPID.fdb = Rammer.speed;</span><br><span class="line">	RAMMERSpeedPID.Calc(&amp;RAMMERSpeedPID);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">RammerSpeedPID</span><span class="params">( <span class="keyword">int16_t</span> TargetSpeed )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	RAMMERSpeedPID.kp  = RAMMER_SPEED_KP_DEFAULTS;</span><br><span class="line">	RAMMERSpeedPID.ki  = RAMMER_SPEED_KI_DEFAULTS;</span><br><span class="line">	RAMMERSpeedPID.kd  = RAMMER_SPEED_KD_DEFAULTS;</span><br><span class="line">	RAMMERSpeedPID.ref = TargetSpeed;</span><br><span class="line">	RAMMERSpeedPID.fdb = Rammer.speed;</span><br><span class="line">	RAMMERSpeedPID.Calc(&amp;RAMMERSpeedPID);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>函数指针是指向函数的指针变量。函数具有可赋值给指针的物理内存地址，一个函数的函数名就是一个指针，它指向函数的代码。一个函数的地址是该函数的进入点，也是调用函数的地址。将指针指向函数名也就是函数的进入点，就可以达到用指针运行函数的功能。</p>
-<p>定义形式：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类型 （*指针变量名）（参数列表）；</span><br></pre></td></tr></table></figure></p>
+<p>定义形式：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类型 （*指针变量名）（参数列表）；</span><br></pre></td></tr></table></figure>
 <p>例如：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> (*p)(<span class="keyword">int</span> i,<span class="keyword">int</span> j);</span><br></pre></td></tr></table></figure>
         </div>
@@ -204,7 +205,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://lonewolferic.github.io/2018/08/26/Implement-class-with-C/" data-id="cjlruoysb0002qeo9y5ikrmks" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lonewolferic.github.io/2018/08/26/Implement-class-with-C/" data-id="cjlsxmjh80005jao9sksa82oz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -398,10 +399,30 @@ var _hmt = _hmt || [];
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/08/31/2018-summer-vacation-RM-training-summary/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/RoboMaster/image-img13-large.cbc4a6c.jpg)" alt="2018暑期RM培训总结”" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Control/">Control</a></p>
+                            <p class="item-title"><a href="/2018/08/31/2018-summer-vacation-RM-training-summary/" class="title">2018暑期RM培训总结”</a></p>
+                            <p class="item-date"><time datetime="2018-08-30T16:00:00.000Z" itemprop="datePublished">2018-08-31</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/08/27/Analysis-of-gimbal-servo-control-system/" class="thumbnail">
     
     
-        <span style="background-image:url(/img/others/v2-ad9ef1011cb83fff5ef856242ccfc128_r.jpg)" alt="浅析RM步兵机器人云台-底盘随动系统" class="thumbnail-image"></span>
+        <span style="background-image:url(/img/RoboMaster/v2-ad9ef1011cb83fff5ef856242ccfc128_r.jpg)" alt="浅析RM步兵机器人云台-底盘随动系统" class="thumbnail-image"></span>
     
     
 </a>
@@ -435,26 +456,6 @@ var _hmt = _hmt || [];
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/08/12/When-academic-misconduct-becomes-a-trend/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/pexels/dark-galaxy-wallpaper-night-32237.jpg)" alt="当学术不端成为一种风尚......" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
-                            <p class="item-title"><a href="/2018/08/12/When-academic-misconduct-becomes-a-trend/" class="title">当学术不端成为一种风尚......</a></p>
-                            <p class="item-date"><time datetime="2018-08-11T16:00:00.000Z" itemprop="datePublished">2018-08-12</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -464,7 +465,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Control/">Control</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Course/">Course</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Control/">Control</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Course/">Course</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -474,7 +475,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -484,7 +485,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RoboMaster/">RoboMaster</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制/">控制</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/比赛/">比赛</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/评论/">评论</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RoboMaster/">RoboMaster</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/学习/">学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/总结/">总结</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/控制/">控制</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/比赛/">比赛</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络/">网络</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/评论/">评论</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -494,7 +495,7 @@ var _hmt = _hmt || [];
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/RoboMaster/" style="font-size: 10px;">RoboMaster</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/学习/" style="font-size: 15px;">学习</a> <a href="/tags/嵌入式/" style="font-size: 20px;">嵌入式</a> <a href="/tags/总结/" style="font-size: 10px;">总结</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/控制/" style="font-size: 15px;">控制</a> <a href="/tags/杂谈/" style="font-size: 20px;">杂谈</a> <a href="/tags/比赛/" style="font-size: 10px;">比赛</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/评论/" style="font-size: 10px;">评论</a>
+            <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/RoboMaster/" style="font-size: 15px;">RoboMaster</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/学习/" style="font-size: 15px;">学习</a> <a href="/tags/嵌入式/" style="font-size: 20px;">嵌入式</a> <a href="/tags/总结/" style="font-size: 15px;">总结</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/控制/" style="font-size: 15px;">控制</a> <a href="/tags/杂谈/" style="font-size: 20px;">杂谈</a> <a href="/tags/比赛/" style="font-size: 10px;">比赛</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/评论/" style="font-size: 10px;">评论</a>
         </div>
     </div>
 
