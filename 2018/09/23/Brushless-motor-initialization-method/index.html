@@ -6,26 +6,26 @@
     
 
     
-    <title>建议认真学的选修课 | 孤狼博客</title>
+    <title>无刷电机初始化方法 | 孤狼博客</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-        <meta name="keywords" content="学习" />
+        <meta name="keywords" content="电机" />
     
-    <meta name="description" content="工程制图  推荐指数：4  如果要搞机器人比赛，机（bei）械（guo）组画图的时候总得看懂吧，虽然教的很浅，但是大致听听，懂点东西还是好很多的。 复变函数  推荐指数：10 以前觉得傅里叶拉普拉斯有啥用？我就是饿死，挂科，死外边，也不会去学他的！嗯，真香！工程里频域分析比时域分析方便多了。 同时，复变函数是信号与系统的基础，信号与系统又是 自动控制原理的基础。so……学不好复变，满盘皆输！ 已经">
-<meta name="keywords" content="学习">
+    <meta name="description" content="问题描述 问题背景：炮台摩擦轮电机需要转动，摩擦子弹使子弹获得速度。涵道电机也需要转动以此获得推力。 问题：摩擦轮电机和涵道电机都是无刷电机，但是和底盘的电机的电调不一样，底盘电机用的C620电调是直接通过CAN通信发送电流值，而这里的电调是用PWM波控制的。 实验对象：好盈100A电调，4114无刷电机/涵道电机。 需要初始化的情况：  新电调第一次使用 电调三相电连接的负载电机更换 输入端PW">
+<meta name="keywords" content="电机">
 <meta property="og:type" content="article">
-<meta property="og:title" content="建议认真学的选修课">
-<meta property="og:url" content="http://lonewolferic.github.io/2018/09/04/Suggested-elective-courses/index.html">
+<meta property="og:title" content="无刷电机初始化方法">
+<meta property="og:url" content="http://lonewolferic.github.io/2018/09/23/Brushless-motor-initialization-method/index.html">
 <meta property="og:site_name" content="孤狼博客">
-<meta property="og:description" content="工程制图  推荐指数：4  如果要搞机器人比赛，机（bei）械（guo）组画图的时候总得看懂吧，虽然教的很浅，但是大致听听，懂点东西还是好很多的。 复变函数  推荐指数：10 以前觉得傅里叶拉普拉斯有啥用？我就是饿死，挂科，死外边，也不会去学他的！嗯，真香！工程里频域分析比时域分析方便多了。 同时，复变函数是信号与系统的基础，信号与系统又是 自动控制原理的基础。so……学不好复变，满盘皆输！ 已经">
+<meta property="og:description" content="问题描述 问题背景：炮台摩擦轮电机需要转动，摩擦子弹使子弹获得速度。涵道电机也需要转动以此获得推力。 问题：摩擦轮电机和涵道电机都是无刷电机，但是和底盘的电机的电调不一样，底盘电机用的C620电调是直接通过CAN通信发送电流值，而这里的电调是用PWM波控制的。 实验对象：好盈100A电调，4114无刷电机/涵道电机。 需要初始化的情况：  新电调第一次使用 电调三相电连接的负载电机更换 输入端PW">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://lonewolferic.github.io/img/pexels/retro-school.jpeg">
-<meta property="og:updated_time" content="2018-09-24T12:51:48.937Z">
+<meta property="og:image" content="http://lonewolferic.github.io/img/pexels/aircraft-aviation-blades-40024.jpg">
+<meta property="og:updated_time" content="2018-09-24T13:02:15.230Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="建议认真学的选修课">
-<meta name="twitter:description" content="工程制图  推荐指数：4  如果要搞机器人比赛，机（bei）械（guo）组画图的时候总得看懂吧，虽然教的很浅，但是大致听听，懂点东西还是好很多的。 复变函数  推荐指数：10 以前觉得傅里叶拉普拉斯有啥用？我就是饿死，挂科，死外边，也不会去学他的！嗯，真香！工程里频域分析比时域分析方便多了。 同时，复变函数是信号与系统的基础，信号与系统又是 自动控制原理的基础。so……学不好复变，满盘皆输！ 已经">
-<meta name="twitter:image" content="http://lonewolferic.github.io/img/pexels/retro-school.jpeg">
+<meta name="twitter:title" content="无刷电机初始化方法">
+<meta name="twitter:description" content="问题描述 问题背景：炮台摩擦轮电机需要转动，摩擦子弹使子弹获得速度。涵道电机也需要转动以此获得推力。 问题：摩擦轮电机和涵道电机都是无刷电机，但是和底盘的电机的电调不一样，底盘电机用的C620电调是直接通过CAN通信发送电流值，而这里的电调是用PWM波控制的。 实验对象：好盈100A电调，4114无刷电机/涵道电机。 需要初始化的情况：  新电调第一次使用 电调三相电连接的负载电机更换 输入端PW">
+<meta name="twitter:image" content="http://lonewolferic.github.io/img/pexels/aircraft-aviation-blades-40024.jpg">
     
 
     
@@ -149,18 +149,18 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/Course/">Course</a>
+    <a class="page-title-link" href="/categories/Embedded/">Embedded</a>
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-Suggested-elective-courses" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-Brushless-motor-initialization-method" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        建议认真学的选修课
+        无刷电机初始化方法
         </h1>
     
 
@@ -170,64 +170,68 @@ var _hmt = _hmt || [];
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/2018/09/04/Suggested-elective-courses/" class="article-date">
-            <time datetime="2018-09-03T16:00:00.000Z" itemprop="datePublished">2018-09-04</time>
+        <a href="/2018/09/23/Brushless-motor-initialization-method/" class="article-date">
+            <time datetime="2018-09-22T16:00:00.000Z" itemprop="datePublished">2018-09-23</time>
         </a>
     </div>
 
                 
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/学习/">学习</a>
+        <a class="tag-link" href="/tags/电机/">电机</a>
     </div>
 
             </div>
         
         
         <div class="article-entry" itemprop="articleBody">
-            <h1 id="工程制图"><a href="#工程制图" class="headerlink" title="工程制图"></a>工程制图</h1><p><img src="/2018/09/04/Suggested-elective-courses/工程制图.PNG" alt="工程制图"></p>
+            <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><hr>
+<p>问题背景：炮台摩擦轮电机需要转动，摩擦子弹使子弹获得速度。涵道电机也需要转动以此获得推力。</p>
+<p>问题：摩擦轮电机和涵道电机都是无刷电机，但是和底盘的电机的电调不一样，底盘电机用的C620电调是直接通过CAN通信发送电流值，而这里的电调是用PWM波控制的。</p>
+<p>实验对象：好盈100A电调，4114无刷电机/涵道电机。</p>
+<p>需要初始化的情况：</p>
 <ul>
-<li>推荐指数：4</li>
+<li>新电调第一次使用</li>
+<li>电调三相电连接的负载电机更换</li>
+<li>输入端PWM高电平的上下限改变</li>
 </ul>
-<p>如果要搞机器人比赛，机（bei）械（guo）组画图的时候总得看懂吧，虽然教的很浅，但是大致听听，懂点东西还是好很多的。</p>
-<h1 id="复变函数"><a href="#复变函数" class="headerlink" title="复变函数"></a>复变函数</h1><p><img src="/2018/09/04/Suggested-elective-courses/复变.PNG" alt="复变"></p>
+<h1 id="硬件简介"><a href="#硬件简介" class="headerlink" title="硬件简介"></a>硬件简介</h1><hr>
+<h2 id="无刷电机"><a href="#无刷电机" class="headerlink" title="无刷电机"></a>无刷电机</h2><p><a href="https://www.bilibili.com/video/av17681391" target="_blank" rel="noopener">工作原理</a></p>
+<p>有刷电机内部电流换相是通过内部的电刷完成的，而无刷电调是通过三相电按照一定的时序轮流通电达到的电机转动效果。</p>
+<h2 id="无刷电调"><a href="#无刷电调" class="headerlink" title="无刷电调"></a>无刷电调</h2><p>控制电机转动必定是要使用电调，电调负责将电调电源输入端的直流电源转化为电调输出端的三相电，驱动无刷电机转动。三相电的电流量由电调的输入端信号决定。步兵车底盘的C620电调输入信号是由单片机通过CAN总线输入的。而这次用的好盈电调是的输入端是通过PWM波信号输入的。</p>
+<p><strong>注意</strong>：这里给的PWM波的意义和有刷电机驱动板的输入PWM信号不一样，有刷电机驱动板输入端的PWM信号的作用是让驱动芯片导通和关闭，而无刷电机驱动器输入端的信号的意义其实是数字信号，电调检测PWM波占空比输入相对应的三相电的电流量大小。</p>
+<p><img src="/2018/09/23/Brushless-motor-initialization-method/无刷电机套装.PNG" alt="无刷电机套装"></p>
+<h1 id="初始化方法"><a href="#初始化方法" class="headerlink" title="初始化方法"></a>初始化方法</h1><hr>
+<h2 id="电调初始化"><a href="#电调初始化" class="headerlink" title="电调初始化"></a>电调初始化</h2><p>电调初始化的意义：好盈电调一般来说是给船模航模爱好者用的，所以网上查初始化资料会发现，说是将油门推满进行初始化。电调要正常工作，电调需要知道自己三相电端接的电机的特性（内部NS极磁铁有几块，电流的时序怎么给），还需要知道遥控器给的满油门和零油门（油门量程）。</p>
+<h3 id="未对频"><a href="#未对频" class="headerlink" title="未对频"></a>未对频</h3><p>没有对频的时候，电调发B—-B—-B—-的声音，中间时隔大约2s。此时电调未对频，无刷电机无法转动。</p>
+<h3 id="对频"><a href="#对频" class="headerlink" title="对频"></a>对频</h3><ul>
+<li><strong>输入PWM波的要求</strong></li>
+</ul>
+<p>频率：40-50Hz（本次使用的是40Hz）</p>
+<p>满油门：2ms高电平</p>
+<p>零油门：1ms高电平</p>
 <ul>
-<li><p>推荐指数：10</p>
-<p>以前觉得傅里叶拉普拉斯有啥用？我就是饿死，挂科，死外边，也不会去学他的！嗯，真香！工程里频域分析比时域分析方便多了。</p>
-<p>同时，<code>复变函数</code>是<code>信号与系统</code>的基础，<code>信号与系统</code>又是 <code>自动控制原理</code>的基础。so……学不好复变，满盘皆输！</p>
-<p>已经变必修了</p>
-</li>
+<li><strong>操作</strong></li>
 </ul>
-<h1 id="数值分析"><a href="#数值分析" class="headerlink" title="数值分析"></a>数值分析</h1><p><img src="/2018/09/04/Suggested-elective-courses/数值分析.PNG" alt="数值分析"></p>
+<p>由于对频操作是需要人和电调交互的，所以使用遥控器来进行对频操作。先修改程序，遥控器的ch1摇杆通道控制PWM波的占空比（推到满，PWM占空比最大，对应满油门）。</p>
+<p>先不给电调上电，将遥控器油门推到满，再给电调上电，当电调发出B-B两声之后，松开摇杆，然摇杆回到自然的中间位置，然后电调会发出B-B-B-B-B–B~~，最后一下B长响一下之后，代表电调对频成功。此时,推动摇杆，电机将开始转动。</p>
+<h3 id="对频之后"><a href="#对频之后" class="headerlink" title="对频之后"></a>对频之后</h3><p>第一次对频成功之后就不需要每次上电都重新对频。如果是遥控器控制，上电的时候，摇杆不要拨动（零油门位置）。电调发出B-B-B-B-B–B~~的声音之后（自检），电调开始正常工作。此时,推动摇杆，电机将开始转动。</p>
+<p>如果是程序控制，程序一上电的时候给电调零油门对应的PWM波，等待6s之后，初始化完成，电调自检成功。这时，改变PWM占空比就可以开环控制电机转速。</p>
+<h1 id="四、-程序"><a href="#四、-程序" class="headerlink" title="四、 程序"></a>四、 程序</h1><hr>
+<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p><img src="/2018/09/23/Brushless-motor-initialization-method/RC.PNG" alt="RC"></p>
 <ul>
-<li><p>推荐指数：9</p>
-<p>颠覆数学观，微积分里告诉我们严谨的公式推导计算，每一个等号换元都要仔细考虑，这门课告诉我们如果算那些没法（严谨）算的东西：最小二乘法解决超定方程，插值拟合函数。</p>
-<p>也变成必修了</p>
-</li>
+<li>S1拨在最上面的时候不能操作无刷电机。</li>
+<li>S1拨在最下面的时候，右摇杆的上下方向控制油门大下，拨到最上面是满油门，中间位置零油门。</li>
+<li>S1拨在中间的时候，功能为锁住当前油门量不变。此时，拨动右摇杆，不会影响油门的大小。</li>
 </ul>
-<h1 id="计算机软件基础"><a href="#计算机软件基础" class="headerlink" title="计算机软件基础"></a>计算机软件基础</h1><p><img src="/2018/09/04/Suggested-elective-courses/计软.PNG" alt="计软"></p>
-<ul>
-<li><p>推荐指数：8</p>
-<p>说是计算机软件基础一个听起来很普通的名字，其实是数据结构，计算机专业的最重要的专业基础课。如果想走计算机的方向这门课必须学好。里面的堆栈的概念也会在<code>微机原理</code>里面出现。这门课介绍不同的数据结构：顺序表，堆栈，队列……计算机专业面试笔试必考的东西。</p>
-</li>
-</ul>
-<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><p><img src="/2018/09/04/Suggested-elective-courses/数据库.PNG" alt="数据库"></p>
-<ul>
-<li><p>推荐指数：6</p>
-<p>数据库嘛，刚开始很无聊，后面就突然：这什么鬼？学到这了？SQL语句挺有用，如果想做大数据之类的可以尝试去学。但是没有学好照样可以搞数据分析之类的，因为现在的很多数据都是csv格式，pandas可以直接导入，但是pandas也用到了数据库里面主键之类的概念。</p>
-</li>
-</ul>
-<h1 id="信号与系统"><a href="#信号与系统" class="headerlink" title="信号与系统"></a>信号与系统</h1><p><img src="/2018/09/04/Suggested-elective-courses/信号.PNG" alt="信号"></p>
-<ul>
-<li><p>推荐指数：10</p>
-<p>学完之后你就知道为什么要去学复变了，学了<code>自动控制原理</code>就知道为什么要学信号了。里面的卷积，单位信号，频域分析细细想来都是很有用的东西。</p>
-</li>
-</ul>
-<h1 id="数字图像处理"><a href="#数字图像处理" class="headerlink" title="数字图像处理"></a>数字图像处理</h1><p><img src="/2018/09/04/Suggested-elective-courses/数字图像处理.PNG" alt="数字图像处理"></p>
-<ul>
-<li>推荐指数：10</li>
-</ul>
-<p>模式识别的方向。</p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>本程序的S1拨中间锁住油门功能一般用于单人测试摩擦轮或者其他不需要控制电机转速的情景。但是此时让电机停下需要再去拨动S1到最上面，单人操作的时候可能会不是很方便，要注意安全，不要让电机伤人。</p>
+<p>本程序不仅可以用于测试摩擦轮，还可以用于其他任何测试驱动无刷电机的场景——如涵道电机推力测试。</p>
+<p>DJI的电机也是需要初始化的：</p>
+<p><img src="/2018/09/23/Brushless-motor-initialization-method/TIM图片20180924182232.jpg" alt="DJI电机说明书"></p>
+<h2 id="主要源码"><a href="#主要源码" class="headerlink" title="主要源码"></a>主要源码</h2><p><strong>程序文件名：无刷电调初始化20180924</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PWM_Configuration</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">    GPIO_InitTypeDef          gpio;</span><br><span class="line">    TIM_TimeBaseInitTypeDef   tim;</span><br><span class="line">    TIM_OCInitTypeDef         oc;</span><br><span class="line">    RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA ,ENABLE);</span><br><span class="line">    RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5, ENABLE);</span><br><span class="line">    gpio.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2;</span><br><span class="line">    gpio.GPIO_Mode = GPIO_Mode_AF;</span><br><span class="line">    gpio.GPIO_Speed = GPIO_Speed_100MHz;</span><br><span class="line">    GPIO_Init(GPIOA,&amp;gpio);</span><br><span class="line">    GPIO_PinAFConfig(GPIOA,GPIO_PinSource0, GPIO_AF_TIM5);</span><br><span class="line">    GPIO_PinAFConfig(GPIOA,GPIO_PinSource1,GPIO_AF_TIM5);</span><br><span class="line">	GPIO_PinAFConfig(GPIOA,GPIO_PinSource2,GPIO_AF_TIM5);</span><br><span class="line">    tim.TIM_Prescaler = <span class="number">84</span><span class="number">-1</span>;</span><br><span class="line">    tim.TIM_CounterMode = TIM_CounterMode_Up;</span><br><span class="line">    tim.TIM_Period = <span class="number">2500</span><span class="number">-1</span>;</span><br><span class="line">    tim.TIM_ClockDivision = TIM_CKD_DIV1;</span><br><span class="line">    TIM_TimeBaseInit(TIM5,&amp;tim);</span><br><span class="line">    oc.TIM_OCMode = TIM_OCMode_PWM2;</span><br><span class="line">    oc.TIM_OutputState = TIM_OutputState_Enable;</span><br><span class="line">    oc.TIM_OutputNState = TIM_OutputState_Disable;</span><br><span class="line">    oc.TIM_Pulse = <span class="number">1000</span><span class="number">-1</span>;</span><br><span class="line">    oc.TIM_OCPolarity = TIM_OCPolarity_Low;</span><br><span class="line">    oc.TIM_OCNPolarity = TIM_OCPolarity_High;</span><br><span class="line">    oc.TIM_OCIdleState = TIM_OCIdleState_Reset;</span><br><span class="line">    oc.TIM_OCNIdleState = TIM_OCIdleState_Set;</span><br><span class="line">    TIM_OC1Init(TIM5,&amp;oc);</span><br><span class="line">    TIM_OC2Init(TIM5,&amp;oc);</span><br><span class="line">	oc.TIM_Pulse = <span class="number">500</span><span class="number">-1</span>;</span><br><span class="line">	TIM_OC3Init(TIM5,&amp;oc);</span><br><span class="line">    TIM_OC1PreloadConfig(TIM5,TIM_OCPreload_Enable);</span><br><span class="line">    TIM_OC2PreloadConfig(TIM5,TIM_OCPreload_Enable);</span><br><span class="line">	TIM_OC3PreloadConfig(TIM5,TIM_OCPreload_Enable);</span><br><span class="line">    TIM_ARRPreloadConfig(TIM5,ENABLE);		</span><br><span class="line">    TIM_Cmd(TIM5,ENABLE);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PWM1  TIM5-&gt;CCR1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PWM2  TIM5-&gt;CCR2</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SetFrictionWheelSpeed(x) \</span></span><br><span class="line">        PWM1 = x;                \</span><br><span class="line">        PWM2 = x;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( GetMouse_press_l() == <span class="number">1</span>)</span><br><span class="line">&#123;</span><br><span class="line">	SetFrictionWheelSpeed( (RC_CtrlData.rc.ch1 - <span class="number">1024</span>) * <span class="number">1.5</span> + <span class="number">1000</span> );</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> ( GetMouse_press_l() == <span class="number">2</span>)</span><br><span class="line">&#123;</span><br><span class="line">	;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">	SetFrictionWheelSpeed( <span class="number">1000</span> );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         <footer class="article-footer">
@@ -235,7 +239,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://lonewolferic.github.io/2018/09/04/Suggested-elective-courses/" data-id="cjmgakjgq000br9o92gwrejxy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lonewolferic.github.io/2018/09/23/Brushless-motor-initialization-method/" data-id="cjmgakjgj0006r9o9dqbvmvlj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -345,20 +349,10 @@ var _hmt = _hmt || [];
         
 <nav id="article-nav">
     
-        <a href="/2018/09/05/auto-blog-img-path-process/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">newer</strong>
-        <p class="article-nav-title">
-        
-            Hexo博客markdown文件图片路径自动处理脚本
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2018/08/31/2018-summer-vacation-RM-training-summary/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/09/05/auto-blog-img-path-process/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">older</strong>
-        <p class="article-nav-title">2018暑期RM培训总结</p>
+        <p class="article-nav-title">Hexo博客markdown文件图片路径自动处理脚本</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -373,7 +367,7 @@ var _hmt = _hmt || [];
     <h3 class="widget-title">Catalog</h3>
     <div class="widget">
         <div id="toc" class="toc-article">
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#工程制图"><span class="toc-number">1.</span> <span class="toc-text">工程制图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#复变函数"><span class="toc-number">2.</span> <span class="toc-text">复变函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数值分析"><span class="toc-number">3.</span> <span class="toc-text">数值分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#计算机软件基础"><span class="toc-number">4.</span> <span class="toc-text">计算机软件基础</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库"><span class="toc-number">5.</span> <span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#信号与系统"><span class="toc-number">6.</span> <span class="toc-text">信号与系统</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数字图像处理"><span class="toc-number">7.</span> <span class="toc-text">数字图像处理</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#问题描述"><span class="toc-number">1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#硬件简介"><span class="toc-number">2.</span> <span class="toc-text">硬件简介</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#无刷电机"><span class="toc-number">2.1.</span> <span class="toc-text">无刷电机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无刷电调"><span class="toc-number">2.2.</span> <span class="toc-text">无刷电调</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#初始化方法"><span class="toc-number">3.</span> <span class="toc-text">初始化方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#电调初始化"><span class="toc-number">3.1.</span> <span class="toc-text">电调初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#未对频"><span class="toc-number">3.1.1.</span> <span class="toc-text">未对频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对频"><span class="toc-number">3.1.2.</span> <span class="toc-text">对频</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对频之后"><span class="toc-number">3.1.3.</span> <span class="toc-text">对频之后</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、-程序"><span class="toc-number">4.</span> <span class="toc-text">四、 程序</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#功能"><span class="toc-number">4.1.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">4.2.</span> <span class="toc-text">其他</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要源码"><span class="toc-number">4.3.</span> <span class="toc-text">主要源码</span></a></li></ol></li></ol>
         </div>
     </div>
 </div>

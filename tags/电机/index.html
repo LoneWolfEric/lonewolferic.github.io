@@ -6,14 +6,14 @@
     
 
     
-    <title>Tag: 电路 | 孤狼博客</title>
+    <title>Tag: 电机 | 孤狼博客</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="description" content="生命不息，折腾不止">
 <meta property="og:type" content="website">
 <meta property="og:title" content="孤狼博客">
-<meta property="og:url" content="http://lonewolferic.github.io/tags/电路/index.html">
+<meta property="og:url" content="http://lonewolferic.github.io/tags/电机/index.html">
 <meta property="og:site_name" content="孤狼博客">
 <meta property="og:description" content="生命不息，折腾不止">
 <meta property="og:locale" content="en">
@@ -143,7 +143,7 @@ var _hmt = _hmt || [];
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>Tag: <em>电路</em>
+    <i class="icon fa fa-tag"></i>Tag: <em>电机</em>
     </h1>
 </div>
                         <div class="main-body-content">
@@ -166,17 +166,17 @@ var _hmt = _hmt || [];
         <article class="article article-summary">
     <div class="article-summary-inner">
         
-        <a href="/2018/08/02/Digitial-circuit-learning-summary/" class="thumbnail">
+        <a href="/2018/09/23/Brushless-motor-initialization-method/" class="thumbnail">
     
     
-        <span style="background-image:url(/img/pexels/board-chip-circuits-163170.jpg)" alt="《数电》学习总结" class="thumbnail-image"></span>
+        <span style="background-image:url(/img/pexels/aircraft-aviation-blades-40024.jpg)" alt="无刷电机初始化方法" class="thumbnail-image"></span>
     
     
         
 <span class="comment-counter">
     <i class="fa fa-comments-o"></i>
     
-        <span><a href="http://lonewolferic.github.io/2018/08/02/Digitial-circuit-learning-summary/#isso-thread"></a></span>
+        <span><a href="http://lonewolferic.github.io/2018/09/23/Brushless-motor-initialization-method/#isso-thread"></a></span>
     
 </span>
 
@@ -187,19 +187,27 @@ var _hmt = _hmt || [];
         
         <div class="article-meta">
             <div class="category">
-            <a class="article-category-link" href="/categories/Course/">Course</a>
+            <a class="article-category-link" href="/categories/Embedded/">Embedded</a>
             </div>
-            <div class="date"><time datetime="2018-08-01T16:00:00.000Z" itemprop="datePublished">2018-08-02</time></div>
+            <div class="date"><time datetime="2018-09-22T16:00:00.000Z" itemprop="datePublished">2018-09-23</time></div>
         </div>
         
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2018/08/02/Digitial-circuit-learning-summary/">《数电》学习总结</a>
+        <a href="/2018/09/23/Brushless-motor-initialization-method/">无刷电机初始化方法</a>
         </h1>
     
 
         <p class="article-excerpt">
-            数电是一门专业基础课，讲的是数字电路，所以在数电的世界里只有0和1。数电的直接应用是FPGA，而我认为数电更像是一门为其他课程打基础的课程。比如数电的直接服务对象——微机原理。数电本身的一些东西学了之后只是知道了有这么一个东西，但是在微机原理中，你会看到这些数字电路的直接使用，为他们的奇妙作用而惊叹。当然啦，对于外人来说，感觉这个世界还有自己的电脑竟然全是靠着这些0，1来构成的，感觉非常的神奇@曾
+            问题描述
+问题背景：炮台摩擦轮电机需要转动，摩擦子弹使子弹获得速度。涵道电机也需要转动以此获得推力。
+问题：摩擦轮电机和涵道电机都是无刷电机，但是和底盘的电机的电调不一样，底盘电机用的C620电调是直接通过CAN通信发送电流值，而这里的电调是用PWM波控制的。
+实验对象：好盈100A电调，4114无刷电机/涵道电机。
+需要初始化的情况：
+
+新电调第一次使用
+电调三相电连接的负载电机更换
+输入端PW
         </p>
     </div>
 </article>
