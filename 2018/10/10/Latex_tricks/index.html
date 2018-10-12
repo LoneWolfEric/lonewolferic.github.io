@@ -21,7 +21,7 @@
 <meta property="og:description" content="解决表格过宽，超过纸张边缘：  \resizebox{\textwidth}{12mm}{ tabular环境 }  实例： 12345678910111213\begin&amp;#123;table&amp;#125;[htbp]    \centering    \resizebox&amp;#123;\textwidth&amp;#125;&amp;#123;12mm&amp;#125;&amp;#123;        \begin&amp;#123">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://lonewolferic.github.io/img/pexels/book-glass.jpeg">
-<meta property="og:updated_time" content="2018-10-11T07:45:54.658Z">
+<meta property="og:updated_time" content="2018-10-12T13:24:38.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Latex小技巧">
 <meta name="twitter:description" content="解决表格过宽，超过纸张边缘：  \resizebox{\textwidth}{12mm}{ tabular环境 }  实例： 12345678910111213\begin&amp;#123;table&amp;#125;[htbp]    \centering    \resizebox&amp;#123;\textwidth&amp;#125;&amp;#123;12mm&amp;#125;&amp;#123;        \begin&amp;#123">
@@ -192,6 +192,9 @@ var _hmt = _hmt || [];
 <p>实例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;table&#125;[htbp]</span><br><span class="line">    \centering</span><br><span class="line">    \resizebox&#123;\textwidth&#125;&#123;12mm&#125;&#123;</span><br><span class="line">        \begin&#123;tabular&#125;&#123;|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|&#125;</span><br><span class="line">        \toprule</span><br><span class="line">             变量 &amp; $x_&#123;11&#125;$     &amp; $x_&#123;12&#125;$     &amp; $x_&#123;13&#125;$     &amp; $x_&#123;14&#125;$     &amp; $x_&#123;21&#125;$     &amp; $x_&#123;22&#125;$     &amp; $x_&#123;23&#125;$&amp; $x_&#123;24&#125;$     &amp; $d_&#123;1&#125;^&#123;-&#125;$     &amp; $d_&#123;1&#125;^&#123;+&#125;$     &amp; $d_&#123;2&#125;^&#123;-&#125;$     &amp; $d_&#123;2&#125;^&#123;+&#125;$     &amp; $d_&#123;3&#125;^&#123;-&#125;$     &amp; $d_&#123;3&#125;^&#123;+&#125;$     &amp; $d_&#123;4&#125;^&#123;-&#125;$     &amp; $d_&#123;4&#125;^&#123;+&#125;$     &amp; $d_&#123;5&#125;^&#123;-&#125;$     &amp; $d_&#123;5&#125;^&#123;+&#125;$     &amp; $d_&#123;6&#125;^&#123;-&#125;$     &amp; $d_&#123;6&#125;^&#123;+&#125;$     &amp; $d_&#123;7&#125;^&#123;-&#125;$     &amp; $d_&#123;7&#125;^&#123;+&#125;$ \\</span><br><span class="line">        \midrule</span><br><span class="line">             计算结果 &amp; 3    &amp; 37    &amp; 3     &amp; 4     &amp; 37    &amp; 3    &amp; 6     &amp; 1     &amp; 0     &amp; 7    &amp;0      &amp; 50    &amp; 0     &amp; 23453 &amp; 0     &amp; 0     &amp; 0     &amp; 0     &amp; 3     &amp; 0     &amp; 2     &amp; 0 \\</span><br><span class="line">        \bottomrule</span><br><span class="line">        \end&#123;tabular&#125;&#125;</span><br><span class="line">    \caption&#123;普通老板计算结果&#125;</span><br><span class="line">    \label&#123;tab:addlabel&#125;%</span><br><span class="line">\end&#123;table&#125;%</span><br></pre></td></tr></table></figure>
 <hr>
+<p>两张小图并排</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;figure&#125;[h]</span><br><span class="line">	\begin&#123;minipage&#125;[t]&#123;0.5\linewidth&#125;</span><br><span class="line">		\centering</span><br><span class="line">		\includegraphics[width=2.2in]&#123;../DIP/edge.jpeg&#125;</span><br><span class="line">		\caption&#123;边缘检测后提取的部分圆周&#125;</span><br><span class="line">		\label&#123;fig:side:a&#125;</span><br><span class="line">	\end&#123;minipage&#125;%</span><br><span class="line">	\begin&#123;minipage&#125;[t]&#123;0.5\linewidth&#125;</span><br><span class="line">		\centering</span><br><span class="line">		\includegraphics[width=2.2in]&#123;../DIP/final.jpeg&#125;</span><br><span class="line">		\caption&#123;标注残缺的部分&#125;</span><br><span class="line">		\label&#123;fig:side:b&#125;</span><br><span class="line">	\end&#123;minipage&#125;</span><br><span class="line">\end&#123;figure&#125;</span><br></pre></td></tr></table></figure>
+<hr>
 
         </div>
         <footer class="article-footer">
@@ -199,7 +202,7 @@ var _hmt = _hmt || [];
 
 
 
-    <a data-url="http://lonewolferic.github.io/2018/10/10/Latex_tricks/" data-id="cjn4a2xu4000hofo96k5iokv2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://lonewolferic.github.io/2018/10/10/Latex_tricks/" data-id="cjn61nvhs000a6bo90ko1lllb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
