@@ -166,6 +166,112 @@ var _hmt = _hmt || [];
         <article class="article article-summary">
     <div class="article-summary-inner">
         
+        <a href="/2018/09/23/Brushless-motor-initialization-method/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/pexels/选区_005.png)" alt="无刷电机初始化方法" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span><a href="http://lonewolferic.github.io/2018/09/23/Brushless-motor-initialization-method/#isso-thread"></a></span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Embedded/">Embedded</a>
+            </div>
+            <div class="date"><time datetime="2018-09-22T16:00:00.000Z" itemprop="datePublished">2018-09-23</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/09/23/Brushless-motor-initialization-method/">无刷电机初始化方法</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            问题描述
+问题背景：炮台摩擦轮电机需要转动，摩擦子弹使子弹获得速度。涵道电机也需要转动以此获得推力。
+问题：摩擦轮电机和涵道电机都是无刷电机，但是和底盘的电机的电调不一样，底盘电机用的C620电调是直接通过CAN通信发送电流值，而这里的电调是用PWM波控制的。
+实验对象：好盈100A电调，4114无刷电机/涵道电机。
+需要初始化的情况：
+
+新电调第一次使用
+电调三相电连接的负载电机更换
+输入端PW
+        </p>
+    </div>
+</article>
+    
+
+    
+    
+    
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2018/09/05/auto-blog-img-path-process/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/pexels/desk-nerd.jpeg)" alt="Hexo博客markdown文件图片路径自动处理脚本" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span><a href="http://lonewolferic.github.io/2018/09/05/auto-blog-img-path-process/#isso-thread"></a></span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/Python/">Python</a>
+            </div>
+            <div class="date"><time datetime="2018-09-05T04:20:36.000Z" itemprop="datePublished">2018-09-05</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2018/09/05/auto-blog-img-path-process/">Hexo博客markdown文件图片路径自动处理脚本</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            问题描述Hexo博客通过markdown文件来生成html文件。而我们的博客中经常会插入图片，如何方便的让插入的图片经过渲染之后正确地显示在网页上是我们要解决的问题。
+传送门：hexo博客的图片解决方法
+这里的方案可以在hexo new post的时候产生一个文件夹，并且在hexo g的时候自动关联图片文件夹和md文件。但是我们在写博客的时候插入图片一般是直接将图片拖入typora中，这样留下的图
+        </p>
+    </div>
+</article>
+    
+        </div>
+    
+
+    
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
         <a href="/2018/09/04/Suggested-elective-courses/" class="thumbnail">
     
     
@@ -591,107 +697,6 @@ So？看起来没什么问题：拼命研发-参加比赛-包揽奖项-收获名
         </div>
     
 
-    
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/06/17/a-bug-about-microcontroller-initalization/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/pexels/ai-artificial-intelligence-astronomy-73910.jpg)" alt="关于单片机初始化的注意事项" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span><a href="http://lonewolferic.github.io/2018/06/17/a-bug-about-microcontroller-initalization/#isso-thread"></a></span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Embedded/">Embedded</a>
-            </div>
-            <div class="date"><time datetime="2018-06-16T16:00:00.000Z" itemprop="datePublished">2018-06-17</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/06/17/a-bug-about-microcontroller-initalization/">关于单片机初始化的注意事项</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            为了让单片机完成我们所需的功能，我们每次都会使用到很多的外设，并且在控制系统中，为了保证控制的时效性，有一个专门的定时器来产生中断，进入控制环——controlloop，在主函数的循环中则放入不痛不痒的程序——led闪烁之类的。一个标准的单片机程序流程为：初始化各个外设，进入while(1)循环，定时器定时产生中断，在中断中，完成控制任务，回到while(1)，再进入下一个中断，解算姿态……以此循
-        </p>
-    </div>
-</article>
-    
-
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2018/05/16/my-first-model-boat-race/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/others/1526477179153.jpeg)" alt="纪念第一次参加技术类比赛：船模大赛" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span><a href="http://lonewolferic.github.io/2018/05/16/my-first-model-boat-race/#isso-thread"></a></span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/Embedded/">Embedded</a>
-            </div>
-            <div class="date"><time datetime="2018-05-15T16:00:00.000Z" itemprop="datePublished">2018-05-16</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2018/05/16/my-first-model-boat-race/">纪念第一次参加技术类比赛：船模大赛</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            做个船模比赛心好累
-前期调试
-比赛前三周开始调模块，主控芯片采用stm32f407，通讯采用蓝牙串口模块，没用24L01的原因是……没调出来；电机采用2212无刷电机。不得不说，在所有的模块调试里面，通讯是最麻烦的：电机、舵机、两路ADC花了半天就调好了，通讯调了一天半。
-看似把模块组合在一起很简单，但这就是硬件玄学的地方。
-初赛
-爆肝调船！由于之前没有调过无刷电机（抱歉菜到大家了），一直不知道怎
-        </p>
-    </div>
-</article>
-    
-        </div>
-    
-
 
     </div></section>
 
@@ -746,6 +751,26 @@ So？看起来没什么问题：拼命研发-参加比赛-包揽奖项-收获名
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/2018/12/17/Essay-writing-skills/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/pexels/book-coffee.jpeg)" alt="论文写作技巧" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Others/">Others</a></p>
+                            <p class="item-title"><a href="/2018/12/17/Essay-writing-skills/" class="title">论文写作技巧</a></p>
+                            <p class="item-date"><time datetime="2018-12-16T16:00:00.000Z" itemprop="datePublished">2018-12-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/2018/11/11/KangXi-angered-Student-Union/" class="thumbnail">
     
     
@@ -760,6 +785,26 @@ So？看起来没什么问题：拼命研发-参加比赛-包揽奖项-收获名
                             <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
                             <p class="item-title"><a href="/2018/11/11/KangXi-angered-Student-Union/" class="title">康熙怒斥学生会</a></p>
                             <p class="item-date"><time datetime="2018-11-10T16:00:00.000Z" itemprop="datePublished">2018-11-11</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/11/01/Tips-on-Technical-Writing/" class="thumbnail">
+    
+    
+        <span style="background-image:url(/img/pexels/book-clutter-desk-73988.jpg)" alt="Tips-on-Technical-Writing" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Others/">Others</a></p>
+                            <p class="item-title"><a href="/2018/11/01/Tips-on-Technical-Writing/" class="title">Tips-on-Technical-Writing</a></p>
+                            <p class="item-date"><time datetime="2018-10-31T16:00:00.000Z" itemprop="datePublished">2018-11-01</time></p>
                         </div>
                     </li>
                 
@@ -803,46 +848,6 @@ So？看起来没什么问题：拼命研发-参加比赛-包揽奖项-收获名
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/10/27/Games-and-puppy-love-are-not-monsters-at-all/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/pexels/affection-afterglow-backlit-556667.jpg)" alt="游戏和早恋根本就不是洪水猛兽" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Life/">Life</a></p>
-                            <p class="item-title"><a href="/2018/10/27/Games-and-puppy-love-are-not-monsters-at-all/" class="title">游戏和早恋根本就不是洪水猛兽</a></p>
-                            <p class="item-date"><time datetime="2018-10-26T16:00:00.000Z" itemprop="datePublished">2018-10-27</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2018/10/25/Why-freshmen-are-not-wanted-in-competition-team/" class="thumbnail">
-    
-    
-        <span style="background-image:url(/img/pexels/look-out.jpeg)" alt="“抱歉，我们只要大二以上的......”" class="thumbnail-image"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Management/">Management</a></p>
-                            <p class="item-title"><a href="/2018/10/25/Why-freshmen-are-not-wanted-in-competition-team/" class="title">“抱歉，我们只要大二以上的......”</a></p>
-                            <p class="item-date"><time datetime="2018-10-24T16:00:00.000Z" itemprop="datePublished">2018-10-25</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -852,7 +857,7 @@ So？看起来没什么问题：拼命研发-参加比赛-包揽奖项-收获名
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Control/">Control</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Course/">Course</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Management/">Management</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Control/">Control</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Course/">Course</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Embedded/">Embedded</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Life/">Life</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Management/">Management</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Others/">Others</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -862,7 +867,7 @@ So？看起来没什么问题：拼命研发-参加比赛-包揽奖项-收获名
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -872,7 +877,7 @@ So？看起来没什么问题：拼命研发-参加比赛-包揽奖项-收获名
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/RoboMaster/" style="font-size: 13.33px;">RoboMaster</a> <a href="/tags/latex/" style="font-size: 13.33px;">latex</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/学习/" style="font-size: 16.67px;">学习</a> <a href="/tags/学生会/" style="font-size: 10px;">学生会</a> <a href="/tags/嵌入式/" style="font-size: 16.67px;">嵌入式</a> <a href="/tags/总结/" style="font-size: 13.33px;">总结</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/排版/" style="font-size: 13.33px;">排版</a> <a href="/tags/控制/" style="font-size: 13.33px;">控制</a> <a href="/tags/杂谈/" style="font-size: 20px;">杂谈</a> <a href="/tags/比赛/" style="font-size: 10px;">比赛</a> <a href="/tags/电机/" style="font-size: 10px;">电机</a> <a href="/tags/电路/" style="font-size: 10px;">电路</a> <a href="/tags/管理/" style="font-size: 13.33px;">管理</a> <a href="/tags/组队/" style="font-size: 10px;">组队</a> <a href="/tags/经验/" style="font-size: 10px;">经验</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/论文/" style="font-size: 13.33px;">论文</a> <a href="/tags/评论/" style="font-size: 13.33px;">评论</a>
+            <a href="/tags/C/" style="font-size: 10px;">C</a> <a href="/tags/RoboMaster/" style="font-size: 12.5px;">RoboMaster</a> <a href="/tags/latex/" style="font-size: 12.5px;">latex</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/学习/" style="font-size: 15px;">学习</a> <a href="/tags/学生会/" style="font-size: 10px;">学生会</a> <a href="/tags/嵌入式/" style="font-size: 15px;">嵌入式</a> <a href="/tags/总结/" style="font-size: 12.5px;">总结</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/排版/" style="font-size: 12.5px;">排版</a> <a href="/tags/控制/" style="font-size: 12.5px;">控制</a> <a href="/tags/杂谈/" style="font-size: 20px;">杂谈</a> <a href="/tags/比赛/" style="font-size: 10px;">比赛</a> <a href="/tags/电机/" style="font-size: 10px;">电机</a> <a href="/tags/电路/" style="font-size: 10px;">电路</a> <a href="/tags/管理/" style="font-size: 12.5px;">管理</a> <a href="/tags/组队/" style="font-size: 10px;">组队</a> <a href="/tags/经验/" style="font-size: 10px;">经验</a> <a href="/tags/网络/" style="font-size: 10px;">网络</a> <a href="/tags/论文/" style="font-size: 17.5px;">论文</a> <a href="/tags/评论/" style="font-size: 12.5px;">评论</a>
         </div>
     </div>
 
